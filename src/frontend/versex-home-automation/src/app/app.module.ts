@@ -13,6 +13,7 @@ import { ButtonModule } from 'primeng/button';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { PanelModule } from 'primeng/panel';
 import { KnobModule } from 'primeng/knob';
+import { CardModule } from 'primeng/card';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { KnobModule } from 'primeng/knob';
     LoginComponent,
     NotFoundComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -30,7 +31,8 @@ import { KnobModule } from 'primeng/knob';
     ButtonModule,
     MegaMenuModule,
     PanelModule,
-    KnobModule
+    KnobModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
