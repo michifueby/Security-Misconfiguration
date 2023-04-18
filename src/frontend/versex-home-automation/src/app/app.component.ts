@@ -33,7 +33,6 @@ export class AppComponent implements OnInit {
         icon: 'pi pi-chart-bar',
         routerLink: ['/dashboard'],
       },
-
     ];
   }
 }

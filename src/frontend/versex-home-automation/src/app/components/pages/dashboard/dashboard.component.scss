@@ -1,0 +1,13 @@
+.center-container {
+  margin: auto;
+  width: 70%;
+}
+
+.actualSensorsContainer {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  flex-shrink: 3;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 5em;
+}
