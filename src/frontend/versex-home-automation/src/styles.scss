@@ -3,4 +3,9 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 
-
+:host {
+  ::ng-deep .p-card .p-card-body {
+    border: none !important;
+    border-color: red;
+  }
+}

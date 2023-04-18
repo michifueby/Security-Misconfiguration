@@ -1,7 +1,13 @@
+<header>
+  <app-avatar/>
+</header>
 
-<div class="card">
-  <p-megaMenu orientation="vertical" [model]="items"></p-megaMenu>
+<div class="card" styleClass="ngx-color">
+  <p-megaMenu orientation="vertical" [model]="items">
+    <ng-template id="logo-image" pTemplate="start">
+      <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" height="40" class="mr-2" />
+    </ng-template>
+  </p-megaMenu>
 </div>
 
 <router-outlet></router-outlet>
-

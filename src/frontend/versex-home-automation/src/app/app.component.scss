@@ -1,0 +1,27 @@
+:host ::ng-deep .p-megamenu {
+  border: none !important;
+  height: 100vh !important;
+}
+
+:host
+  ::ng-deep
+  .p-megamenu
+  .p-megamenu-root-list {
+    margin-top: 30px;
+}
+
+header {
+  padding: 3rem;
+  margin: -0.5em;
+  background-color: #091a32;
+}
+
+.card {
+  margin-left: -10px;
+  margin-top: -80px;
+}
+
+img {
+  margin-left: 15px;
+}
+

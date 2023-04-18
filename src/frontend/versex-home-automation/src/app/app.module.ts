@@ -14,7 +14,8 @@ import { MegaMenuModule } from 'primeng/megamenu';
 import { PanelModule } from 'primeng/panel';
 import { KnobModule } from 'primeng/knob';
 import { CardModule } from 'primeng/card';
-
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CardModule } from 'primeng/card';
     NotFoundComponent,
     DashboardComponent,
     HomeComponent,
+    AvatarComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -32,7 +34,8 @@ import { CardModule } from 'primeng/card';
     MegaMenuModule,
     PanelModule,
     KnobModule,
-    CardModule
+    CardModule,
+    AvatarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
