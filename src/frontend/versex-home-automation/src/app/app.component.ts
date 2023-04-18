@@ -6,6 +6,7 @@ import { MegaMenuItem } from 'primeng/api';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
   /** *
    * Initializes a new instance of the AppComponent class.
