@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>versex_home_automation</RootNamespace>
+    <UserSecretsId>282c2f6e-5fbf-429f-8308-2084b2f11169</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
@@ -21,11 +22,50 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.29.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.29.0" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
     <None Remove="MySql.EntityFrameworkCore" />
+    <None Remove="Entities\" />
+    <None Remove="Data\" />
+    <None Remove="Entities\Enums\" />
+    <None Remove="JWT\" />
+    <None Remove="Attributes\" />
+    <None Remove="Services\" />
+    <None Remove="Services\User\" />
+    <None Remove="Models\" />
+    <None Remove="Models\Requests\" />
+    <None Remove="Models\Responses\" />
+    <None Remove="Converters\" />
+    <None Remove="Services\Authentication\" />
+    <None Remove="Controllers\" />
+    <None Remove="Helper\" />
+    <None Remove="Services\Common\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Data\" />
+    <Folder Include="Entities\Enums\" />
+    <Folder Include="JWT\" />
+    <Folder Include="Attributes\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\User\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Requests\" />
+    <Folder Include="Models\Responses\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Services\Authentication\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Helper\" />
+    <Folder Include="Services\Common\" />
   </ItemGroup>
 </Project>
