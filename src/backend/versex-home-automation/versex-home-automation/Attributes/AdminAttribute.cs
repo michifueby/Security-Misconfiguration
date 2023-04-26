@@ -1,4 +1,12 @@
-﻿namespace versex_home_automation.Attributes;
+﻿//-----------------------------------------------------------------------
+// <copyright file="AdminAttribute.cs" company="FH Wiener Neustadt">
+//     Copyright (c) FH Wiener Neustadt. All rights reserved.
+// </copyright>
+// <authors>Michael Füby, Tunjic Josip</authors>
+// <summary>Versex Home Automation</summary>
+//-----------------------------------------------------------------------
+
+namespace versex_home_automation.Attributes;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +21,10 @@ public class AdminAttribute : Attribute, IAuthorizationFilter
     {
         var account = (User)context.HttpContext.Items["User"]!;
 
-        if (account == null || account.Roles.All(r => r.Name != Entities.Enums.RoleName.Admin))
+        if (account == null || account.Roles!.All(r => r.Name != Entities.Enums.RoleName.Admin))
         {
             // not logged in or not admin
-            context.Result = new JsonResult(new { message = "Unauthorized - admin only!" }) { StatusCode = StatusCodes.Status401Unauthorized };
+            context.Result = new JsonResult(new { message = "Unauthorized - Admin only!" }) { StatusCode = StatusCodes.Status401Unauthorized };
         }
     }
 }

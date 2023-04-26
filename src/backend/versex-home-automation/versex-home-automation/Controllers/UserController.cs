@@ -1,10 +1,18 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿//-----------------------------------------------------------------------
+// <copyright file="UserController.cs" company="FH Wiener Neustadt">
+//     Copyright (c) FH Wiener Neustadt. All rights reserved.
+// </copyright>
+// <authors>Michael Füby, Tunjic Josip</authors>
+// <summary>Versex Home Automation</summary>
+//-----------------------------------------------------------------------
+
+namespace versex_home_automation.Controllers;
+
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using versex_home_automation.Attributes;
 using versex_home_automation.Models.Requests;
 using versex_home_automation.Services.User;
-
-namespace versex_home_automation.Controllers;
 
 [ApiController]
 [EnableCors]

@@ -1,4 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿//-----------------------------------------------------------------------
+// <copyright file="UserService.cs" company="FH Wiener Neustadt">
+//     Copyright (c) FH Wiener Neustadt. All rights reserved.
+// </copyright>
+// <authors>Michael Füby, Tunjic Josip</authors>
+// <summary>Versex Home Automation</summary>
+//-----------------------------------------------------------------------
+
+namespace versex_home_automation.Services.User;
+
+using Microsoft.AspNetCore.Mvc;
 using versex_home_automation.Data;
 using versex_home_automation.Entities;
 using versex_home_automation.Entities.Enums;
@@ -8,8 +18,6 @@ using versex_home_automation.Models.Requests;
 using versex_home_automation.Models.Responses;
 using versex_home_automation.Services.Common;
 using versex_home_automation.Services.User;
-
-namespace versex_home_automation.Services.User;
 
 public class UserService : IUserService
 {

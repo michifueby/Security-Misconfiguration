@@ -1,8 +1,16 @@
-﻿using System.Collections;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿//-----------------------------------------------------------------------
+// <copyright file="ItemConverterDecorator.cs" company="FH Wiener Neustadt">
+//     Copyright (c) FH Wiener Neustadt. All rights reserved.
+// </copyright>
+// <authors>Michael Füby, Tunjic Josip</authors>
+// <summary>Versex Home Automation</summary>
+//-----------------------------------------------------------------------
 
 namespace versex_home_automation.Converters;
+
+using System.Collections;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 #nullable disable
 

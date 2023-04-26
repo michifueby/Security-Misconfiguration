@@ -1,4 +1,12 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Program.cs" company="FH Wiener Neustadt">
+//     Copyright (c) FH Wiener Neustadt. All rights reserved.
+// </copyright>
+// <authors>Michael Füby, Tunjic Josip</authors>
+// <summary>Versex Home Automation</summary>
+//-----------------------------------------------------------------------
+
+using System;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -49,7 +57,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 1safsfsdfdfd\"",
+        Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer ",
     });
     c.AddSecurityRequirement(new OpenApiSecurityRequirement {
         {
@@ -64,6 +72,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+// Get auth code
 string authConfigurationCode = builder.Configuration.GetValue<string>("AuthConfig")!;
 
 builder.Services.Configure<AuthConfigurationOptions>(options =>

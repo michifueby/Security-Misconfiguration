@@ -1,14 +1,23 @@
-﻿using System;
-using System.Security.Cryptography;
-using System.Text;
+﻿//-----------------------------------------------------------------------
+// <copyright file="PasswordHasher.cs" company="FH Wiener Neustadt">
+//     Copyright (c) FH Wiener Neustadt. All rights reserved.
+// </copyright>
+// <authors>Michael Füby, Tunjic Josip</authors>
+// <summary>Versex Home Automation</summary>
+//-----------------------------------------------------------------------
 
 namespace versex_home_automation.Helper;
+
+using System;
+using System.Security.Cryptography;
+using System.Text;
 
 public static class PasswordHasher
 {
     public static string ComputeHash(string password, string salt, string pepper, int iteration)
     {
-        if (iteration <= 0) return password;
+        if (iteration <= 0)
+            return password;
 
         using var sha256 = SHA256.Create();
         var passwordSaltPepper = $"{password}{salt}{pepper}";

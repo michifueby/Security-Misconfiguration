@@ -1,7 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using versex_home_automation.Entities;
+﻿//-----------------------------------------------------------------------
+// <copyright file="DatabaseContext.cs" company="FH Wiener Neustadt">
+//     Copyright (c) FH Wiener Neustadt. All rights reserved.
+// </copyright>
+// <authors>Michael Füby, Tunjic Josip</authors>
+// <summary>Versex Home Automation</summary>
+//-----------------------------------------------------------------------
 
 namespace versex_home_automation.Data;
+
+using Microsoft.EntityFrameworkCore;
+using versex_home_automation.Entities;
 
 public partial class DatabaseContext : DbContext
 {
@@ -27,30 +35,23 @@ public partial class DatabaseContext : DbContext
 
             entity.Property(e => e.FirstName)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(255);
 
             entity.Property(e => e.LastName)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(255);
 
             entity.Property(e => e.Password)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(255);
 
             entity.Property(e => e.UserName)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(255);
         });
 
         // Testdata:
-        var SUPERUSER = new User
-        {
-            UserId = 1,
-            UserName = "user",
-            FirstName = "Super",
-            LastName = "User",
-            Password = "test123"
-        };
+        // ...
 
         modelBuilder.Entity<Role>(entity =>
         {
@@ -60,8 +61,6 @@ public partial class DatabaseContext : DbContext
             .Property(r => r.Name)
             .HasConversion<string>();
         });
-
-        modelBuilder.Entity<User>().HasData(SUPERUSER);
 
         base.OnModelCreating(modelBuilder);
     }

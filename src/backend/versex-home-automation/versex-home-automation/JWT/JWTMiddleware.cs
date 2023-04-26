@@ -1,4 +1,12 @@
-﻿using Microsoft.Extensions.Options;
+﻿//-----------------------------------------------------------------------
+// <copyright file="JWTMiddleware.cs" company="FH Wiener Neustadt">
+//     Copyright (c) FH Wiener Neustadt. All rights reserved.
+// </copyright>
+// <authors>Michael Füby, Tunjic Josip</authors>
+// <summary>Versex Home Automation</summary>
+//-----------------------------------------------------------------------
+
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using versex_home_automation.Services.User;
 using System.IdentityModel.Tokens.Jwt;
@@ -33,7 +41,7 @@ public class JWTMiddleware
         try
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_JWTSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_JWTSettings.Secret!);
             tokenHandler.ValidateToken(token, new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,

@@ -46,6 +46,7 @@
     <None Remove="Controllers\" />
     <None Remove="Helper\" />
     <None Remove="Services\Common\" />
+    <None Remove="Models\Options\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,5 +68,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Helper\" />
     <Folder Include="Services\Common\" />
+    <Folder Include="Models\Options\" />
   </ItemGroup>
 </Project>

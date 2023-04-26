@@ -1,4 +1,14 @@
-﻿using Microsoft.Extensions.Options;
+﻿//-----------------------------------------------------------------------
+// <copyright file="AuthenticationServices.cs" company="FH Wiener Neustadt">
+//     Copyright (c) FH Wiener Neustadt. All rights reserved.
+// </copyright>
+// <authors>Michael Füby, Tunjic Josip</authors>
+// <summary>Versex Home Automation</summary>
+//-----------------------------------------------------------------------
+
+namespace versex_home_automation.Services.Authentication;
+
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using versex_home_automation.Data;
 using versex_home_automation.JWT;
@@ -9,8 +19,6 @@ using System.Security.Claims;
 using System.Text;
 using versex_home_automation.Helper;
 using versex_home_automation.Services.Common;
-
-namespace versex_home_automation.Services.Authentication;
 
 public class AuthenticationService : IAuthenticationService
 {
@@ -44,7 +52,7 @@ public class AuthenticationService : IAuthenticationService
         }
 
         // Check password
-        var passwordHash = PasswordHasher.ComputeHash(req.Password, user.PasswordSalt!, _pepper, _iteration);
+        var passwordHash = PasswordHasher.ComputeHash(req.Password!, user.PasswordSalt!, _pepper, _iteration);
         if (user.Password != passwordHash)
             return null;
 
