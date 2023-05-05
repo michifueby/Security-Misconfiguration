@@ -16,6 +16,7 @@ import { KnobModule } from 'primeng/knob';
 import { CardModule } from 'primeng/card';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { SpeedDialModule } from 'primeng/speeddial';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     PanelModule,
     KnobModule,
     CardModule,
-    AvatarModule
+    AvatarModule,
+    SpeedDialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
