@@ -17,6 +17,7 @@ import { CardModule } from 'primeng/card';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { SpeedDialModule } from 'primeng/speeddial';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
