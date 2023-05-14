@@ -1,0 +1,158 @@
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #071426;
+  border: 1px solid #071426;
+  border-radius: 5px;
+}
+
+.card-head {
+  width: 100%;
+}
+
+.logo {
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-head-line {
+  width: 100%;
+  height: 2px;
+  background-color: #7fffd4;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-head-title {
+  font-size: xx-large;
+}
+
+.card-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.inputStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 5% 5% 5% 5%;
+}
+
+.inputStyle i {
+  color: #343e58;
+  margin-right: 2%;
+  font-size: 1.5em;
+}
+
+.inputStyle input {
+  width: 100%;
+  border: none;
+  background-color: #071426;
+  border-bottom: 2px solid #0f2b52;
+  font-size: 1em;
+  transition-duration: 500ms;
+}
+
+.inputStyle input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #7fffd4
+}
+
+.inputStyle button {
+  width: 50%;
+  height: 60%;
+  margin: 5% 5% 5% 5%;
+  border: none;
+  background-color: #7fffd4;
+  border-radius: 8px;
+  color: #071426;
+}
+
+.toggle-visibility {
+  margin-left: 1%;
+}
+
+.toggle-visibility:hover {
+  cursor:pointer
+}
+
+.toggle-visibility .eye i {
+  color:#7fffd4
+}
+
+.break-section {
+  width: 100%;
+  height: 1px;
+  background-color: #0f2b52;
+}
+
+.login-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 100%;
+}
+
+.login-footer button {
+  width: 40%;
+  font-size: 1.2em;
+  border: 1px solid #7fffd4;
+  border-radius: 10px;
+  color: #071426;
+  background-color: #7fffd4;
+  transition: 500ms;
+}
+
+.login-footer button:hover {
+  cursor: pointer;
+}
+
+.button-content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+}
+
+.register-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 100%;
+}
+
+.register-footer button {
+  width: 40%;
+  font-size: 1.2em;
+  border: 1px solid #7fffd4;
+  border-radius: 10px;
+  color: #071426;
+  background-color: #7fffd4;
+  transition: 500ms;
+}
+
+.register-footer button:hover {
+  cursor: pointer;
+}
