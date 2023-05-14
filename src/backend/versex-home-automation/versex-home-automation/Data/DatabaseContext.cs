@@ -21,9 +21,13 @@ public partial class DatabaseContext : DbContext
     {
     }
 
+    #region Properties
+
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
+
+    #endregion
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -46,6 +50,10 @@ public partial class DatabaseContext : DbContext
                 .HasMaxLength(255);
 
             entity.Property(e => e.UserName)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            entity.Property(e => e.Email)
                 .IsRequired()
                 .HasMaxLength(255);
         });

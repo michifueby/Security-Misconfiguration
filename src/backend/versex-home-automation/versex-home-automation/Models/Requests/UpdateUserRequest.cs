@@ -12,8 +12,13 @@ using System.ComponentModel.DataAnnotations;
 
 public class UpdateUserRequest
 {
+    #region Properties
+
     [Required]
     public string? UserName { get; set; }
+
+    [Required]
+    public string? Email { get; set; }
 
     [Required]
     public string? FirstName { get; set; }
@@ -22,4 +27,6 @@ public class UpdateUserRequest
     public string? LastName { get; set; }
 
     public ICollection<string>? Roles { get; set; }
+
+    #endregion
 }

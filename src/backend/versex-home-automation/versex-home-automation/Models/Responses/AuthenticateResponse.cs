@@ -22,6 +22,8 @@ public class AuthenticateResponse
         Token = token;
     }
 
+    #region Properties
+
     public int UserId { get; set; }
 
     public string? UserName { get; set; }
@@ -30,4 +32,6 @@ public class AuthenticateResponse
     public IEnumerable<Role>? Roles { get; set; }
 
     public string Token { get; set; }
+
+    #endregion
 }

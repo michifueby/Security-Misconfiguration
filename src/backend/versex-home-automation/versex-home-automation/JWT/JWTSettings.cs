@@ -10,7 +10,11 @@ namespace versex_home_automation.JWT;
 
 public class JWTSettings
 {
+    #region Properties
+
     public string? Secret { get; set; }
 
     public TimeSpan ValidityDuration { get; set; }
+
+    #endregion
 }

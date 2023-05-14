@@ -15,6 +15,8 @@ using versex_home_automation.Entities.Enums;
 
 public class Role
 {
+    #region Properties
+
     [Required]
     [Key]
     public int RoleId { get; set; }
@@ -24,5 +26,7 @@ public class Role
 
     [JsonIgnore]
     public virtual ICollection<User>? UsersWithRole { get; set; }
+
+    #endregion
 }
 

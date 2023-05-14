@@ -18,10 +18,17 @@ using versex_home_automation.Services.Authentication;
 [Route("api")]
 public class AuthController : Controller
 {
+    #region Privat Fields
+
     private readonly IAuthenticationService _authService;
 
-    public AuthController(IAuthenticationService authService)
+    private readonly ILogger<AuthController> _looger;
+
+    #endregion
+
+    public AuthController(IAuthenticationService authService, ILogger<AuthController> logger)
     {
+        _looger = logger;
         _authService = authService;
     }
 
@@ -32,6 +39,8 @@ public class AuthController : Controller
 
         if (response == null)
         {
+            _looger.LogInformation("Invalid username or password!");
+
             return BadRequest(new
             {
                 message = "Invalid Username or password!"

@@ -16,30 +16,37 @@ using versex_home_automation.Converters;
 
 public class User
 {
-        [Required]
-        [Key]
-        public int UserId { get; set; }
+    #region Properties
 
-        [Required]
-        public string? FirstName { get; set; }
+    [Required]
+    [Key]
+    public int UserId { get; set; }
 
-        [Required]
-        public string? LastName { get; set; }
+    [Required]
+    public string? FirstName { get; set; }
 
-        [Required]
-        public string? UserName { get; set; }
+    [Required]
+    public string? LastName { get; set; }
 
-        [Required]
-        public string? Password { get; set; }
+    [Required]
+    public string? UserName { get; set; }
 
-        public string? PasswordSalt { get; set; }
+    [Required]
+    public string? Email { get; set; }
 
-        [Required]
-        public int RoleId { get; set; } 
+    [Required]
+    public string? Password { get; set; }
 
-        [JsonIgnore]
-        [JsonConverter(typeof(RoleJsonConverter))]
-        public virtual ICollection<Role>? Roles { get; set; }
+    public string? PasswordSalt { get; set; }
+
+    [Required]
+    public int RoleId { get; set; } 
+
+    [JsonIgnore]
+    [JsonConverter(typeof(RoleJsonConverter))]
+    public virtual ICollection<Role>? Roles { get; set; }
+
+    #endregion
 }
 
 

@@ -21,6 +21,8 @@ using versex_home_automation.Services.User;
 
 public class UserService : IUserService
 {
+    #region Privat Fields
+
     private readonly DatabaseContext _dataContext;
 
     private readonly string? _pepper;
@@ -29,6 +31,8 @@ public class UserService : IUserService
 
     private readonly ICommonService _commonService;
 
+    #endregion
+
     public UserService(DatabaseContext dataContext, ICommonService commonService)
     {
         _dataContext = dataContext;
@@ -36,6 +40,8 @@ public class UserService : IUserService
         _commonService = commonService;
         _pepper = _commonService.AuthConfigurationOptions.Value.AuthConfigurationCode;
     }
+
+    #region Public Methods
 
     public IActionResult GetAllUsers()
     {
@@ -79,6 +85,7 @@ public class UserService : IUserService
         var user = new Entities.User
         {
             UserName = req.UserName,
+            Email = req.Email,
             FirstName = req.FirstName,
             LastName = req.LastName,
             PasswordSalt = PasswordHasher.GenerateSalt(),
@@ -129,6 +136,7 @@ public class UserService : IUserService
 
         // Update data
         user.UserName = req.UserName;
+        user.Email = req.Email;
         user.FirstName = req.FirstName;
         user.LastName = req.LastName;
 
@@ -172,6 +180,10 @@ public class UserService : IUserService
         _dataContext.SaveChanges();
         return new NoContentResult();
     }
+
+    #endregion
+
+    #region Privat Methods
 
     private Entities.User GetUserByStringId(string id, out bool errorHappened, out JsonResult error)
     {
@@ -225,4 +237,6 @@ public class UserService : IUserService
 
         return roles;
     }
+
+    #endregion
 }

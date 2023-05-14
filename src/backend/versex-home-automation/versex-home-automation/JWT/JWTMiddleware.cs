@@ -31,12 +31,12 @@ public class JWTMiddleware
         var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
         if (token != null)
-            attachAccountToContext(context, userService, token);
+            AttachAccountToContext(context, userService, token);
 
         await _next(context);
     }
 
-    private void attachAccountToContext(HttpContext context, IUserService userService, string token)
+    private void AttachAccountToContext(HttpContext context, IUserService userService, string token)
     {
         try
         {

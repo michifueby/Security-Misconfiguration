@@ -14,6 +14,8 @@ using System.Text;
 
 public static class PasswordHasher
 {
+    #region Public Static Methods
+
     public static string ComputeHash(string password, string salt, string pepper, int iteration)
     {
         if (iteration <= 0)
@@ -37,5 +39,7 @@ public static class PasswordHasher
 
         return salt;
     }
+
+    #endregion
 }
 

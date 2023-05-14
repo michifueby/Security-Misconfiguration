@@ -22,6 +22,8 @@ using versex_home_automation.Services.Common;
 
 public class AuthenticationService : IAuthenticationService
 {
+    #region Privat Fields
+
     private readonly DatabaseContext _dataContext;
 
     private readonly JWTSettings _JWTSettings;
@@ -32,6 +34,8 @@ public class AuthenticationService : IAuthenticationService
 
     private readonly ICommonService _commonService;
 
+    #endregion
+
     public AuthenticationService(DatabaseContext dataContext, IOptions<JWTSettings> jwtSettings, ICommonService commonService)
     {
         _dataContext = dataContext;
@@ -40,6 +44,8 @@ public class AuthenticationService : IAuthenticationService
         _commonService = commonService;
         _pepper = _commonService.AuthConfigurationOptions.Value.AuthConfigurationCode!;
     }
+
+    #region Public Methods
 
     public AuthenticateResponse? Authenticate(AuthenticateRequest req)
     {
@@ -78,4 +84,6 @@ public class AuthenticationService : IAuthenticationService
         var token = tokenHandler.CreateToken(tokenDescriptor);
         return tokenHandler.WriteToken(token);
     }
+
+    #endregion
 }
