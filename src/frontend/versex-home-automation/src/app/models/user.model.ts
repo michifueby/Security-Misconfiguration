@@ -1,9 +1,13 @@
+import { Time } from "@angular/common";
+
 export interface User {
-  userId: number,
-  userName: string,
+  userName: string;
+  firstName: string;
+  lastName: string;
   email: string
-  firstName: string,
-  lastName: string,
-  password: string,
-  roles: Array<string>,
+  token: string;
+  password: string;
+  claimDuration: Time;
+  issueTime: Date;
+  roles: Array<string>
 }

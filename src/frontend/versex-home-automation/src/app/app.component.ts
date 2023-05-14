@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MegaMenuItem } from 'primeng/api';
+import { TokenStorageService } from './services/token/token-storage.service';
+import { HideContentService } from './services/hide-content/hide-content.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +14,9 @@ export class AppComponent implements OnInit {
   /** *
    * Initializes a new instance of the AppComponent class.
    */
-  constructor() {
+  constructor( private router: Router,
+    private tokenStorage: TokenStorageService,
+    public hideContentService: HideContentService) {
     this.items = [];
   }
 
@@ -27,13 +32,12 @@ export class AppComponent implements OnInit {
       {
         label: 'Home',
         icon: 'pi pi-home',
-        routerLink: [''],
       },
       {
         label: 'Dashboard',
         icon: 'pi pi-chart-bar',
         routerLink: ['/dashboard'],
-      },
+      }
     ];
   }
 }
