@@ -1,0 +1,32 @@
+<h1 mat-dialog-title class="title">Edit user {{data.userName}}</h1>
+<div mat-dialog-content class="content">
+    <form (ngSubmit)="onSubmit()" name="editingForm" [formGroup]="editUserForm" class="content">
+      <span class="p-float-label">
+        <input pInputText id="firstname" formControlName="firstName"/>
+        <label htmlFor="firstname">Firstname</label>
+      </span><br>
+      <span class="p-float-label">
+        <input pInputText id="lastname" formControlName="lastName"/>
+        <label htmlFor="lastname">Lastname</label>
+      </span><br>
+      <span class="p-float-label">
+        <input pInputText id="username" formControlName="userName"/>
+        <label htmlFor="username">Username</label>
+      </span><br>
+      <span class="p-float-label">
+        <input pInputText id="email" formControlName="email"/>
+        <label htmlFor="email">Email</label>
+      </span><br>
+      <span id="roleList" class="p-float-label">
+        <p-dropdown id="roles" [options]="rolesList" formControlName="roles" placeholder="Select a role" inputId="float-label"></p-dropdown>
+        <label for="float-label">Select a role</label>
+      </span>
+    </form>
+</div>
+<div class="actions">
+    <p-button id="deleteButton" (click)="onDelete()">Delete</p-button>
+    <div class="continue">
+        <p-button (click)="cancle()">Cancel</p-button>
+        <p-button (click)="onSubmit()" id="saveButton" cdkFocusInitial>Save</p-button>
+    </div>
+</div>

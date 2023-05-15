@@ -8,10 +8,12 @@ import { MatIconModule } from '@angular/material/icon'
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { LoginComponent } from './components/pages/login-register/login.component';
+import { UsersComponent } from './components/pages/user/users/users.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'users', component: UsersComponent},
   { path: '**', component: NotFoundComponent },
 ];
 

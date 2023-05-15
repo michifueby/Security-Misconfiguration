@@ -1,0 +1,46 @@
+<div class="spacer">
+  <div class="titel">
+    <h1>Users</h1>
+  </div>
+  <div class="nav">
+    <p-button aria-label="refresh" (click)="refresh()">
+      <mat-icon>refresh</mat-icon>
+    </p-button>
+    <p-button id="create" mat-raised-button class="createButton" color="primary" (click)="openCreateDialog()">Create new user</p-button>
+  </div>
+  <div class="card" id="usersTable" >
+    <p-table [value]="dataSource" [tableStyle]="{ 'min-width': '20rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-element>
+            <tr>
+                <td>{{ element.userId }}</td>
+                <td>{{ element.firstName }}</td>
+                <td>{{ element.lastName }}</td>
+                <td>{{ element.userName }}</td>
+                <td>{{ element.email }}</td>
+                <td>
+                  <p-chip>
+                    <div class="p-2">{{element.role == 1 ? "Admin" : "User"}}</div>
+                  </p-chip>
+                </td>
+                <td>
+                  <div class="userButtons">
+                    <p-button label="Edit" (click)="openEditDialog(element.userId, element.userName, element.firstName, element.lastName, element.roles)"></p-button>
+                    <p-button label="Reset password" id="resetPasswordButton" (click)="openResetPasswordDialog(element.userId, element.userName)"></p-button>
+                  </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+.actions{
+  display: flex;
+  flex-direction: row;
+}
+
+.actions .continue{
+  margin-left: auto;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow-y: visible;
+}
+
+#saveButton {
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 2em;
+}
+
+#deleteButton {
+  margin-left: 1.5em;
+  margin-bottom: 2em;
+}
+
+#firstname, #lastname, #username, #password, #email, #roles {
+  width: 100%;
+}
+
+#roleList {
+  margin-bottom: 3em;
+}

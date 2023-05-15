@@ -1,0 +1,8 @@
+<h1 mat-dialog-title class="title">Warning</h1>
+<div mat-dialog-content class="content">
+<p>Are you sure you want to delete the user {{data.userName}} ?</p>
+</div>
+<div mat-dialog-actions class="actions">
+    <p-button (click)="cancle()" cdkFocusInitial>Cancel</p-button>
+    <p-button id="deleteButton" (click)="onDelete()">Delete</p-button>
+</div>

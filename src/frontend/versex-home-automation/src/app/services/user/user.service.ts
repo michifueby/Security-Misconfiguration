@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { environment } from 'src/enviroments/environment';
-import { User } from 'src/app/models/user.model';
+import { UserData } from 'src/app/models/userData.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -19,7 +19,7 @@ export class UserService {
     return this.http.get<any>(`${environment.apiUrl}/user/getall`);
   }
 
-  updateUser(userId: number, data: User): Observable<any> {
+  updateUser(userId: number, data: UserData): Observable<any> {
     return this.http.put<any>(`${environment.apiUrl}/user/update/${userId}`, {
       userName: data.userName,
       firstName: data.firstName,
@@ -39,7 +39,7 @@ export class UserService {
     return this.http.delete<any>(`${environment.apiUrl}/user/delete/${userId}`);
   }
 
-  createUser(data: User): Observable<any> {
+  createUser(data: UserData): Observable<any> {
     return this.http.put<any>(`${environment.apiUrl}/user/create`, {
       userName: data.userName,
       email: data.email,

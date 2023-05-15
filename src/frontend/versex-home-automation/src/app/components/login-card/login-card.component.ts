@@ -17,13 +17,13 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
-  selector: 'app-login-register-card',
-  templateUrl: './login-register-card.component.html',
-  styleUrls: ['./login-register-card.component.scss'],
+  selector: 'app-login-card',
+  templateUrl: './login-card.component.html',
+  styleUrls: ['./login-card.component.scss'],
   encapsulation: ViewEncapsulation.Emulated,
 })
 
-export class LoginRegisterCardComponent implements OnInit {
+export class LoginCardComponent implements OnInit {
 
   constructor(
     private _snackBar: MatSnackBar,

@@ -28,8 +28,7 @@ export class AvatarComponent {
     this.avatarMenuItems = [
         {
             icon: 'pi pi-user-edit',
-            command: () => {
-            },
+            routerLink: ['/users'],
             tooltipOptions: {
               tooltipLabel: 'Edit User'
             },
