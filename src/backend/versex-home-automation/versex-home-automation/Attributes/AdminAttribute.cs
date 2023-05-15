@@ -21,7 +21,7 @@ public class AdminAttribute : Attribute, IAuthorizationFilter
     {
         var account = (User)context.HttpContext.Items["User"]!;
 
-        if (account == null || account.Roles!.All(r => r.Name != Entities.Enums.RoleName.Admin))
+        if (account == null || account.RoleId != 1)
         {
             // not logged in or not admin
             context.Result = new JsonResult(new { message = "Unauthorized - Admin only!" }) { StatusCode = StatusCodes.Status401Unauthorized };

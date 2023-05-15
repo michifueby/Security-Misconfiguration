@@ -10,7 +10,6 @@ namespace versex_home_automation.Controllers;
 
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Org.BouncyCastle.Ocsp;
 using versex_home_automation.Attributes;
 using versex_home_automation.Models.Requests;
 using versex_home_automation.Services.User;

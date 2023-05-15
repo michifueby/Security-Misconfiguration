@@ -21,7 +21,7 @@ public class UserResponse
         Email = user.Email;
         FirstName = user.FirstName;
         LastName = user.LastName;
-        Roles = user.Roles;
+        RoleId = user.RoleId;
     }
 
     #region Properties
@@ -36,8 +36,7 @@ public class UserResponse
 
     public string? LastName { get; set; }
 
-    [JsonConverter(typeof(ItemConverterDecorator<RoleJsonConverter>))]
-    public ICollection<Role>? Roles { get; set; }
+    public int RoleId { get; set; }
 
     #endregion
 }

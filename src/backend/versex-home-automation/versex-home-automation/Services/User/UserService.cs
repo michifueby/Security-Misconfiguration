@@ -77,10 +77,10 @@ public class UserService : IUserService
         if (errorHappened)
             return error;
 
-        if (roles.First().Equals(RoleName.Admin))
-            roleId = 0;
-        else
+        if (roles.First().Equals(RoleName.Admin.ToString()))
             roleId = 1;
+        else
+            roleId = 0;
 
         var user = new Entities.User
         {
@@ -139,6 +139,7 @@ public class UserService : IUserService
         user.Email = req.Email;
         user.FirstName = req.FirstName;
         user.LastName = req.LastName;
+        user.RoleId = req.Roles!.Equals("Admin") ? 0 : 1;
 
         // Add requested, missing roles
         foreach (var role in roles.Where(requestedRole => !user.Roles!.Contains(requestedRole)))
