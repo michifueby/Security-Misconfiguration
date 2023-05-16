@@ -27,6 +27,12 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<Role> Roles { get; set; }
 
+    public virtual DbSet<Sensor> Sensors {get; set;}
+
+    public virtual DbSet<Actor> Actors { get; set; }
+
+    public virtual DbSet<Light> Lights { get; set; }
+
     #endregion
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -65,9 +71,16 @@ public partial class DatabaseContext : DbContext
         {
             entity.ToTable("TBL_Role");
 
-            modelBuilder.Entity<Role>()
-            .Property(r => r.Name)
-            .HasConversion<string>();
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<Sensor>(entity =>
+        {
+            entity.ToTable("TBL_Sensor");
+
+           
         });
 
         base.OnModelCreating(modelBuilder);

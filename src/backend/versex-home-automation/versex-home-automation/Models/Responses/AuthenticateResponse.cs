@@ -16,10 +16,10 @@ public class AuthenticateResponse
 {
     public AuthenticateResponse(User user, IEnumerable<Role>? roles, string token)
     {
-        UserId = user.UserId;
-        UserName = user.UserName;
-        Roles = roles;
-        Token = token;
+        this.UserId = user.UserId;
+        this.UserName = user.UserName;
+        this.Roles = roles;
+        this.Token = token;
     }
 
     #region Properties

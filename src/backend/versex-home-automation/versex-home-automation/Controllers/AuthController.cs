@@ -22,13 +22,13 @@ public class AuthController : Controller
 
     private readonly IAuthenticationService _authService;
 
-    private readonly ILogger<AuthController> _looger;
+    private readonly ILogger<AuthController> _logger;
 
     #endregion
 
     public AuthController(IAuthenticationService authService, ILogger<AuthController> logger)
     {
-        _looger = logger;
+        _logger = logger;
         _authService = authService;
     }
 
@@ -39,7 +39,7 @@ public class AuthController : Controller
 
         if (response == null)
         {
-            _looger.LogInformation("Invalid username or password!");
+            _logger.LogInformation("Invalid username or password!");
 
             return BadRequest(new
             {

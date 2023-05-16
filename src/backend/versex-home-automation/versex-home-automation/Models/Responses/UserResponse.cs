@@ -16,12 +16,12 @@ public class UserResponse
 {
     public UserResponse(User user)
     {
-        UserId = user.UserId;
-        UserName = user.UserName;
-        Email = user.Email;
-        FirstName = user.FirstName;
-        LastName = user.LastName;
-        RoleId = user.RoleId;
+        this.UserId = user.UserId;
+        this.UserName = user.UserName;
+        this.Email = user.Email;
+        this.FirstName = user.FirstName;
+        this.LastName = user.LastName;
+        this.RoleId = user.RoleId;
     }
 
     #region Properties

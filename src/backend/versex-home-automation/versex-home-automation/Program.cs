@@ -15,8 +15,10 @@ using Serilog;
 using versex_home_automation.Data;
 using versex_home_automation.JWT;
 using versex_home_automation.Models;
+using versex_home_automation.Services.Actor;
 using versex_home_automation.Services.Authentication;
 using versex_home_automation.Services.Common;
+using versex_home_automation.Services.Sensor;
 using versex_home_automation.Services.User;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -93,6 +95,8 @@ builder.Services.Configure<AuthConfigurationOptions>(options =>
 builder.Services.AddSingleton<ICommonService, CommonService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
+builder.Services.AddTransient<ISensorService, SensorService>();
+builder.Services.AddTransient<IActorService, ActorService>();
 
 // Configure JWT
 builder.Services.Configure<JWTSettings>(settings =>

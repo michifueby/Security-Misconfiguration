@@ -48,6 +48,8 @@
     <None Remove="Helper\" />
     <None Remove="Services\Common\" />
     <None Remove="Models\Options\" />
+    <None Remove="Services\Sensor\" />
+    <None Remove="Services\Actor\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -70,5 +72,7 @@
     <Folder Include="Helper\" />
     <Folder Include="Services\Common\" />
     <Folder Include="Models\Options\" />
+    <Folder Include="Services\Sensor\" />
+    <Folder Include="Services\Actor\" />
   </ItemGroup>
 </Project>

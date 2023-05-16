@@ -116,8 +116,15 @@ public class UserService : IUserService
         if (errorHappened)
             return error;
 
-        _dataContext.Users.Remove(user);
-        _dataContext.SaveChanges();
+        try
+        {
+            _dataContext.Users.Remove(user);
+            _dataContext.SaveChanges();
+        }
+        catch (Microsoft.EntityFrameworkCore.DbUpdateException e)
+        {
+            return new JsonResult(new { message = e.InnerException!.Message }) { StatusCode = StatusCodes.Status400BadRequest };
+        };
 
         return new NoContentResult();
     }
@@ -177,8 +184,16 @@ public class UserService : IUserService
 
         user.Password = req.Password;
 
-        _dataContext.Users.Update(user);
-        _dataContext.SaveChanges();
+        try
+        {
+            _dataContext.Users.Update(user);
+            _dataContext.SaveChanges();
+        }
+        catch (Microsoft.EntityFrameworkCore.DbUpdateException e)
+        {
+            return new JsonResult(new { message = e.InnerException!.Message }) { StatusCode = StatusCodes.Status400BadRequest };
+        }
+        
         return new NoContentResult();
     }
 
@@ -211,6 +226,7 @@ public class UserService : IUserService
 
         errorHappened = false;
         error = null!;
+
         return user;
     }
 
