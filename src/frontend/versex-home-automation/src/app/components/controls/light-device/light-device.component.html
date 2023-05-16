@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="header">
+    <h1>{{aliasName}}</h1>
+  </div>
+  <div class="container">
+    <div class="deviceType">
+      Type: Light
+    </div>
+    <div class="image">
+      <canvas width="100" height="100" #lightbulbCanvas>
+      </canvas>
+    </div>
+    <div class="lightControl">
+      <div class="label">
+        Brightness:
+      </div>
+      <div class="controlUnit">
+        <app-light-luminacnce [minimum]="0.3" [maximum]="1" [value]="brightness" [steps]="0.01" (luminanceChanged)="update($event)"></app-light-luminacnce>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="toggle">
+      <app-light-switch (valueChanged)="toggleLight($event)"></app-light-switch>
+    </div>
+  </div>
+</div>

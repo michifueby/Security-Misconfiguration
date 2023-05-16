@@ -1,0 +1,48 @@
+<div class="sensors">
+  <div class="sensorContainer">
+    <div class="sensorHeader">
+      Inner
+    </div>
+    <div class="innerSensorContainer">
+      <div class="temp">
+        <div class="knob">
+          <p-knob [(ngModel)]="innerTemperature" [readonly]="true" [size]="150" valueTemplate="{value}°C" [min]="0" [max]="40"></p-knob>
+        </div>
+        <div class="label">
+          Temperature
+        </div>
+      </div>
+      <div class="humidity">
+        <div class="knob">
+          <p-knob [(ngModel)]="innerHumidity" [readonly]="true" [size]="150" valueTemplate="{value}%"></p-knob>
+        </div>
+        <div class="label">
+          Humidity
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sensorContainer">
+    <div class="sensorHeader">
+      Outer
+    </div>
+    <div class="innerSensorContainer">
+      <div class="temp">
+        <div class="knob">
+          <p-knob [(ngModel)]="outerTemperature" [readonly]="true" [size]="150" valueTemplate="{value}°C" [min]="0" [max]="40"></p-knob>
+        </div>
+        <div class="label">
+          Temperature
+        </div>
+      </div>
+      <div class="humidity">
+        <div class="knob">
+          <p-knob [(ngModel)]="outerHumidity" [readonly]="true" [size]="150" valueTemplate="{value}%"></p-knob>
+        </div>
+        <div class="label">
+          Humidity
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

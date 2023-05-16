@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/pages/login-register/login.component';
@@ -11,7 +10,6 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { LoginCardComponent } from './components/login-card/login-card.component';
 import { authInterceptorProviders } from './helper/interceptor/auth-interceptor.service';
-
 import { ButtonModule } from 'primeng/button';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { PanelModule } from 'primeng/panel';
@@ -23,7 +21,7 @@ import { SpeedDialModule } from 'primeng/speeddial';
 import { DropdownModule } from 'primeng/dropdown';
 import { PasswordModule } from 'primeng/password';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -33,6 +31,16 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { DeleteUserComponent } from './components/delete-user/delete-user.component';
+import { AddDeviceComponent } from './components/controls/add-device/add-device.component';
+import { AcDeviceComponent } from './components/controls/ac-device/ac-device.component';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { TempControlComponent } from './components/customControls/temp-control/temp-control.component';
+import { LightDeviceComponent } from './components/controls/light-device/light-device.component';
+import { LightSwitchComponent } from './components/customControls/light-switch/light-switch.component';
+import { LightLuminacnceComponent } from './components/customControls/light-luminacnce/light-luminacnce.component';
+import { SensorDashboardComponent } from './components/pages/sensor-dashboard/sensor-dashboard.component';
+import { UserDropdownComponent } from './components/customControls/user-dropdown/user-dropdown.component';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +55,14 @@ import { DeleteUserComponent } from './components/delete-user/delete-user.compon
     EditUserComponent,
     ResetPasswordComponent,
     DeleteUserComponent,
+    AddDeviceComponent,
+    AcDeviceComponent,
+    TempControlComponent,
+    LightDeviceComponent,
+    LightSwitchComponent,
+    LightLuminacnceComponent,
+    SensorDashboardComponent,
+    UserDropdownComponent
   ],
   imports: [
     AppRoutingModule,

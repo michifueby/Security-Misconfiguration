@@ -11,10 +11,10 @@ import { LoginComponent } from './components/pages/login-register/login.componen
 import { UsersComponent } from './components/pages/user/users/users.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
+  { path: '', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'users', component: UsersComponent},
-  { path: '**', component: NotFoundComponent },
+  // { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
