@@ -1,0 +1,15 @@
+<div class="tempControl">
+  <div class="decrement">
+    <button (click)="decreaseTemperature()">
+      <i class="pi pi-minus"></i>
+    </button>
+  </div>
+  <div class="label">
+    {{temperature | number: '1.2-2'}} °C
+  </div>
+  <div class="increment">
+    <button (click)="increaseTemperature()">
+      <i class="pi pi-plus"></i>
+    </button>
+  </div>
+</div>
