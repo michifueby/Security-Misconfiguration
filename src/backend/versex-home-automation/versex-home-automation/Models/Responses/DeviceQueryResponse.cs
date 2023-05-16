@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ActorQueryResponse.cs" company="FH Wiener Neustadt">
+// <copyright file="DeviceQueryResponse.cs" company="FH Wiener Neustadt">
 //     Copyright (c) FH Wiener Neustadt. All rights reserved.
 // </copyright>
 // <authors>Michael Füby, Tunjic Josip</authors>
@@ -10,7 +10,7 @@ namespace versex_home_automation.Models.Responses;
 
 using versex_home_automation.Entities;
 
-public class ActorQueryResponse
+public class DeviceQueryResponse
 {
-    public IEnumerable<ActorResponse>? Actors { get; set; }
+    public IEnumerable<DeviceResponse>? Devices { get; set; }
 }

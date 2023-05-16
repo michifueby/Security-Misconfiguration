@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ActorResponse.cs" company="FH Wiener Neustadt">
+// <copyright file="DeviceResponse.cs" company="FH Wiener Neustadt">
 //     Copyright (c) FH Wiener Neustadt. All rights reserved.
 // </copyright>
 // <authors>Michael Füby, Tunjic Josip</authors>
@@ -11,23 +11,23 @@ using versex_home_automation.Entities;
 
 namespace versex_home_automation.Models.Responses;
 
-public class ActorResponse
+public class DeviceResponse
 {
-	public ActorResponse(Actor actor)
+	public DeviceResponse(Device device)
 	{
-        this.ActorId = actor.ActorId;
-        this.UserId = actor.UserId;
-        this.Name = actor.Name;
-        this.Value = actor.Value;
+        this.DeviceId = device.DeviceId;
+        this.Name = device.Name;
+        this.State = device.State;
+        this.Value = device.Value;
 	}
 
     #region Properties
 
-    public int ActorId { get; set; }
-
-    public int UserId { get; set; }
+    public int DeviceId { get; set; }
 
     public string? Name { get; set; }
+
+    public bool State { get; set; }
 
     public int Value { get; set; }
 

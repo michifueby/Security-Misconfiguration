@@ -16,6 +16,6 @@ public interface IActorService
 {
     IActionResult GetAllActors();
 
-    IActionResult ChangeStateFromActor(string id, ChangeStateFromActorRequest req);
+    IActionResult ChangeStateFromActor(string id, ChangeStateFromDeviceRequest req);
 }
 

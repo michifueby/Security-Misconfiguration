@@ -47,7 +47,7 @@ public class ActorController : Controller
 
     [LoggedIn]
     [HttpPut("actor/changeState/{id}")]
-    public IActionResult ChangeStateFromActor(string id, ChangeStateFromActorRequest req)
+    public IActionResult ChangeStateFromActor(string id, ChangeStateFromDeviceRequest req)
     {
         _logger.LogInformation($"Change the state of the actor with id {id}!");
         return _actorService.ChangeStateFromActor(id, req);

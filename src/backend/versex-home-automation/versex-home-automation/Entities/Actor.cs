@@ -22,12 +22,6 @@ public class Actor
     [Required]
     public int UserId { get; set; }
 
-    [Required]
-    public int Value { get; set; }
-
-    [Required]
-    public string? Name { get; set; }
-
     #endregion
 }
 

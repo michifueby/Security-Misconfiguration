@@ -36,14 +36,14 @@ public class ActorService : IActorService
 
     public IActionResult GetAllActors()
     {
-        var allActors = _dataContext.Actors.AsEnumerable();
+        var allActors = _dataContext.Devices.AsEnumerable();
 
-        var response = new ActorQueryResponse
+        var response = new DeviceQueryResponse
         {
-            Actors = allActors.Select(a => new ActorResponse(a))
+            Devices = allActors.Select(a => new DeviceResponse(a))
         };
 
-        if (response.Actors.Count() == 0)
+        if (response.Devices.Count() == 0)
         {
             return new NoContentResult();
         }
@@ -51,7 +51,7 @@ public class ActorService : IActorService
         return new JsonResult(response) { StatusCode = StatusCodes.Status200OK };
     }
 
-    public IActionResult ChangeStateFromActor(string id, ChangeStateFromActorRequest req)
+    public IActionResult ChangeStateFromActor(string id, ChangeStateFromDeviceRequest req)
     {
         var actor = GetActorByStringId(id, out bool errorHappened, out JsonResult error);
 
@@ -60,9 +60,10 @@ public class ActorService : IActorService
 
         // Update actor
         actor.Value = req.Value;
+        actor.State = req.State;
 
-        var returnValue = _dataContext.Actors.Update(actor).Entity;
-        var returnMessage = new ActorResponse(returnValue);
+        var returnValue = _dataContext.Devices.Update(actor).Entity;
+        var returnMessage = new DeviceResponse(returnValue);
 
         try
         {
@@ -78,7 +79,7 @@ public class ActorService : IActorService
 
     #endregion
 
-    private Entities.Actor GetActorByStringId(string id, out bool errorHappened, out JsonResult error)
+    private Entities.Device GetActorByStringId(string id, out bool errorHappened, out JsonResult error)
     {
         // Parse Id to Integer
         var wasParseSuccessfull = int.TryParse(id, out int parsedId);
@@ -93,7 +94,7 @@ public class ActorService : IActorService
         }
 
         // Get actor from db
-        var actor = _dataContext.Actors.FirstOrDefault(x => x.ActorId == parsedId);
+        var actor = _dataContext.Devices.FirstOrDefault(x => x.DeviceId == parsedId);
 
         if (actor == null)
         {

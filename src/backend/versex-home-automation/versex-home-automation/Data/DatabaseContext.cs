@@ -31,7 +31,7 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<Actor> Actors { get; set; }
 
-    public virtual DbSet<Light> Lights { get; set; }
+    public virtual DbSet<Device> Devices { get; set; }
 
     #endregion
 
@@ -76,11 +76,32 @@ public partial class DatabaseContext : DbContext
                 .HasMaxLength(255);
         });
 
-        modelBuilder.Entity<Sensor>(entity =>
+        modelBuilder.Entity<Actor>(entity =>
         {
-            entity.ToTable("TBL_Sensor");
+            entity.ToTable("TBL_Actor");
 
-           
+            entity.Property(e => e.ActorId).HasColumnType("int(11)");
+
+            entity.Property(e => e.UserId)
+                .IsRequired()
+                .HasColumnType("int(11)");
+        });
+
+        modelBuilder.Entity<Device>(entity =>
+        {
+            entity.ToTable("TBL_Device");
+
+            entity.Property(e => e.DeviceId).HasColumnType("int(11)");
+
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            entity.Property(e => e.State)
+                .IsRequired();
+
+            entity.Property(e => e.Value)
+                .IsRequired();
         });
 
         base.OnModelCreating(modelBuilder);
