@@ -108,8 +108,8 @@ public class UserService : IUserService
             FirstName = req.FirstName,
             LastName = req.LastName,
             PasswordSalt = PasswordHasher.GenerateSalt(),
-            RoleId = roleId,
-        };
+            RoleId = req.Roles!.Equals("Admin") ? 0 : 1
+    };
 
         // Hashes the password
         user.Password = PasswordHasher.ComputeHash(req.Password!, user.PasswordSalt, _pepper!, _iteration);
