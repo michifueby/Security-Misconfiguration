@@ -40,6 +40,9 @@ import { LightSwitchComponent } from './components/customControls/light-switch/l
 import { LightLuminacnceComponent } from './components/customControls/light-luminacnce/light-luminacnce.component';
 import { SensorDashboardComponent } from './components/pages/sensor-dashboard/sensor-dashboard.component';
 import { UserDropdownComponent } from './components/customControls/user-dropdown/user-dropdown.component';
+import { TerminalComponent } from './components/terminal/terminal.component';
+import { SelectDeviceComponent } from './components/customControls/select-device/select-device.component';
+import { DeviceDropdownComponent } from './components/customControls/device-dropdown/device-dropdown.component';
 
 
 @NgModule({
@@ -62,7 +65,10 @@ import { UserDropdownComponent } from './components/customControls/user-dropdown
     LightSwitchComponent,
     LightLuminacnceComponent,
     SensorDashboardComponent,
-    UserDropdownComponent
+    UserDropdownComponent,
+    TerminalComponent,
+    SelectDeviceComponent,
+    DeviceDropdownComponent
   ],
   imports: [
     AppRoutingModule,
