@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CreateUserComponent } from 'src/app/components/create-user/create-user.component';
+import { ToastComponent } from 'src/app/components/customControls/notification-toast/toast/toast.component';
 import { EditUserComponent } from 'src/app/components/edit-user/edit-user.component';
 import { ResetPasswordComponent } from 'src/app/components/reset-password/reset-password.component';
 import { User } from 'src/app/models/user.model';
@@ -19,7 +20,10 @@ import { UserService } from 'src/app/services/user/user.service';
 export class UsersComponent {
 
   public displayedColumns: string[] = ['userId', 'userName', 'firstName', 'lastName', 'roles', 'edit'];
+
   public dataSource!: Array<User>;
+
+  public toastText!: string;
 
   constructor(
     private tokenService: TokenStorageService,
@@ -28,7 +32,11 @@ export class UsersComponent {
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
     public tokenStorage: TokenStorageService,
-    ) { }
+    ) {
+      this.toast = new ToastComponent();
+    }
+
+  private toast!: ToastComponent;
 
   ngOnInit(): void {
     if (!this.tokenService.getUser()) {
@@ -104,7 +112,8 @@ export class UsersComponent {
       },
       error: (err) => {
         console.log(err);
-        this.openSnackBarError('Something went wrong', 'OK');
+        this.toastText = 'Something went wrong!';
+        this.toast.showToast();
       }
     });
   }
@@ -114,11 +123,13 @@ export class UsersComponent {
       complete: () => {
         this.getAllUser();
         console.log('updated user');
-        this.openSnackBarSuccess('User updated', 'OK');
+        this.toastText = 'User updated!';
+        this.toast.showToast();
       },
       error: (err) => {
         console.log(err);
-        this.openSnackBarError('Something went wrong', 'OK');
+        this.toastText = 'Something went wrong!';
+        this.toast.showToast();
       }
     });
   }
@@ -128,11 +139,13 @@ export class UsersComponent {
       complete: () => {
         this.getAllUser();
         console.log('user deleted');
-        this.openSnackBarSuccess('User deleted', 'OK');
+        this.toastText = 'User deleted!';
+        this.toast.showToast();
       },
       error: (err) => {
         console.log(err);
-        this.openSnackBarError('Something went wrong', 'OK');
+        this.toastText = 'Something went wrong!';
+        this.toast.showToast();
       }
     });
   }
@@ -143,11 +156,13 @@ export class UsersComponent {
       complete: () => {
         this.getAllUser();
         console.log('user created');
-        this.openSnackBarSuccess('User created', 'OK');
+        this.toastText = 'User created!';
+        this.toast.showToast();
       },
       error: (err) => {
         console.log(err);
-        this.openSnackBarError('Something went wrong', 'OK');
+        this.toastText = 'Something went wrong!';
+        this.toast.showToast();
       }
     });
   }
@@ -157,38 +172,20 @@ export class UsersComponent {
       complete: () => {
         this.getAllUser();
         console.log('password changed');
-        this.openSnackBarSuccess('Password changed', 'OK');
+        this.toastText = 'Password changed!';
+        this.toast.showToast();
       },
       error: (err) => {
-        this.openSnackBarError('Something went wrong', 'OK');
+        this.toastText = 'Something went wrong!';
+        this.toast.showToast();
       }
-    });
-  }
-
-  openSnackBarInfo(message: string, action: string) {
-    this.snackBar.open(message, action,{
-      duration: 3000,
-      panelClass: ['red-snackbar']
-    });
-  }
-
-  openSnackBarSuccess(message: string, action: string) {
-    this.snackBar.open(message, action,{
-      duration: 3000,
-      panelClass: ['successStyle']
-    });
-  }
-
-  openSnackBarError(message: string, action: string) {
-    this.snackBar.open(message, action,{
-      duration: 3000,
-      panelClass: ['errorStyle'],
     });
   }
 
   refresh(): void {
     this.getAllUser();
     console.log('list refreshed');
-    this.openSnackBarInfo('Refreshed', '')
+    this.toastText = 'Refreshed!';
+    this.toast.showToast();
   }
 }

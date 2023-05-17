@@ -36,11 +36,4 @@ export class TokenStorageService {
 
     return null;
   }
-
-  public getUserRights(): boolean {
-    if (this.getUser().roleId !== 1)
-      return false;
-
-    return true;
-  }
 }

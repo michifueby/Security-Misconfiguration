@@ -44,6 +44,7 @@ import { TerminalComponent } from './components/terminal/terminal.component';
 import { SelectDeviceComponent } from './components/customControls/select-device/select-device.component';
 import { DeviceDropdownComponent } from './components/customControls/device-dropdown/device-dropdown.component';
 import { LogHistoryComponent } from './components/pages/log/log-history/log-history.component';
+import { ToastComponent } from './components/customControls/notification-toast/toast/toast.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { LogHistoryComponent } from './components/pages/log/log-history/log-hist
     TerminalComponent,
     SelectDeviceComponent,
     DeviceDropdownComponent,
-    LogHistoryComponent
+    LogHistoryComponent,
+    ToastComponent
   ],
   imports: [
     AppRoutingModule,
