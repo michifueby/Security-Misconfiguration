@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="header">
+    <h1>{{aliasName}}</h1>
+  </div>
+  <div class="container">
+    <div class="deviceType">
+      Type: AC
+    </div>
+    <div class="image">
+      <canvas width="100" height="100" [ngClass]="{'rotate': isActive}" #fanCanvas></canvas>
+    </div>
+    <div class="tempControl">
+      <div class="label">
+        Temperature:
+      </div>
+      <div class="controlUnit">
+        <app-temp-control></app-temp-control>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="toggle">
+      <button (click)="toggleFan()" *ngIf="!isActive" class="buttonOn">
+        <i class="pi pi-power-off"></i>
+      </button>
+      <button (click)="toggleFan()" *ngIf="isActive" class="buttonOff">
+        <i class="pi pi-power-off"></i>
+      </button>
+    </div>
+  </div>
+</div>

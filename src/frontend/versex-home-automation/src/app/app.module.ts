@@ -43,6 +43,7 @@ import { UserDropdownComponent } from './components/customControls/user-dropdown
 import { TerminalComponent } from './components/terminal/terminal.component';
 import { SelectDeviceComponent } from './components/customControls/select-device/select-device.component';
 import { DeviceDropdownComponent } from './components/customControls/device-dropdown/device-dropdown.component';
+import { LogHistoryComponent } from './components/pages/log/log-history/log-history.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { DeviceDropdownComponent } from './components/customControls/device-drop
     UserDropdownComponent,
     TerminalComponent,
     SelectDeviceComponent,
-    DeviceDropdownComponent
+    DeviceDropdownComponent,
+    LogHistoryComponent
   ],
   imports: [
     AppRoutingModule,

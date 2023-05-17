@@ -1,6 +1,19 @@
+.title {
+  color: #091a32;
+  background-color: #7fffd4;
+  font-weight: bold;
+  font-family: sans-serif;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
 .actions{
   display: flex;
   flex-direction: row;
+  background-color: #091a32;
+  padding-bottom: 1em;
 }
 
 .actions .continue{
@@ -9,10 +22,12 @@
 
 .content{
   display: flex;
+  padding-top: 2em;
   flex-direction: column;
   flex-wrap: nowrap;
   overflow-y: visible;
   height: 100%;
+  background-color: #091a32;
 }
 
 #submitButton {

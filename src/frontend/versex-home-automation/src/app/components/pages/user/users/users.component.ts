@@ -25,7 +25,8 @@ export class UsersComponent {
     private userService: UserService,
     private router: Router,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public tokenStorage: TokenStorageService
     ) { }
 
   ngOnInit(): void {
@@ -38,6 +39,12 @@ export class UsersComponent {
     }*/
 
     this.getAllUser();
+  }
+
+  public getFirstAndSecondNameFromUser(): string {
+    let user = this.tokenStorage.getUser()
+
+    return user.userName;
   }
 
   openEditDialog(userId: number, userName: string, firstName: string, lastName: string, roles: Array<string>): void {

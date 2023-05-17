@@ -10,36 +10,12 @@
   </div>
   <div class="viewbox">
     <div class="display">
-      <div class="row">
+      <div *ngFor="let log of dataSource;" class="row">
         <div class="timestamp">
-          &lt;16.05.2023 22:16:34&gt;
+          &lt;{{log.timeStamp}}&gt;
         </div>
         <div class="log-message">
-          $sudo apt install
-        </div>
-      </div>
-      <div class="row">
-        <div class="timestamp">
-          &lt;16.05.2023 22:16:42&gt;
-        </div>
-        <div class="log-message">
-          $sudo apt install
-        </div>
-      </div>
-      <div class="row">
-        <div class="timestamp">
-          &lt;16.05.2023 22:17:02&gt;
-        </div>
-        <div class="log-message">
-          $sudo apt install
-        </div>
-      </div>
-      <div class="row">
-        <div class="timestamp">
-          &lt;16.05.2023 22:17:12&gt;
-        </div>
-        <div class="log-message">
-          $sudo apt install
+          {{log.message}}
         </div>
       </div>
 

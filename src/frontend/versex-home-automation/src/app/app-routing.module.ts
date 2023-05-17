@@ -9,11 +9,13 @@ import { DashboardComponent } from './components/pages/dashboard/dashboard.compo
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { LoginComponent } from './components/pages/login-register/login.component';
 import { UsersComponent } from './components/pages/user/users/users.component';
+import { LogHistoryComponent } from './components/pages/log/log-history/log-history.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'users', component: UsersComponent},
+  { path: 'logs', component: LogHistoryComponent},
   // { path: '**', component: NotFoundComponent },
 ];
 

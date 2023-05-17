@@ -1,0 +1,37 @@
+<div class="main">
+  <div class="banner">
+    <img src="../assets/img/Versex-logo.png" height="50"/>
+    <div style="width: 100%;"></div>
+    <app-user-dropdown username="{{getFirstAndSecondNameFromUser()}}"></app-user-dropdown>
+  </div>
+
+  <div class="container">
+    <div class="sidenav">
+      <div class="element">
+        <i class="pi pi-home" style="font-size: 1.2em;"></i>
+        Home
+      </div>
+      <div class="element" style="margin-top: 2%;" [routerLink]="'/dashboard'">
+        <i class="pi pi-desktop" style="font-size: 1.2em;"></i>
+        Dashboard
+      </div>
+      <div class="element" style="margin-top: 2%;" [routerLink]="'/logs'">
+        <i class="pi pi-server" style="font-size: 1.2em;"></i>
+        Log History
+      </div>
+    </div>
+    <div class="content">
+      <div class="inner-content">
+        <div class="head-sytle">
+          <h1>Logs</h1>
+        </div><br>
+
+        <app-terminal></app-terminal>
+
+    </div>
+  </div>
+</div>
+
+
+
+
