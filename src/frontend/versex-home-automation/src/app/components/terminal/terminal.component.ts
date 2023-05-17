@@ -19,7 +19,6 @@ export class TerminalComponent {
   getAllLogs(): void {
     this.logService.getAllLogs().subscribe({
       next: (value) => {
-        console.log(value);
         this.dataSource = value.logs;
       },
       complete: () => {

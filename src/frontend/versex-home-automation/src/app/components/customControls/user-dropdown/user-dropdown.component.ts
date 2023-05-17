@@ -18,13 +18,11 @@ export class UserDropdownComponent implements AfterViewInit{
 
   }
 
-
   isDropdownOpen = false;
 
   ngAfterViewInit(): void {
 
   }
-
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
