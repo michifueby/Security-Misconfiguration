@@ -9,6 +9,7 @@
 namespace versex_home_automation.Services.Authentication;
 
 using Microsoft.Extensions.Options;
+using versex_home_automation.Entities;
 using Microsoft.IdentityModel.Tokens;
 using versex_home_automation.Data;
 using versex_home_automation.JWT;
@@ -54,13 +55,42 @@ public class AuthenticationService : IAuthenticationService
         // Check if user exists
         if (user == null)
         {
+            var userLog = new Log
+            {
+                TimeStamp = DateTimeOffset.Now,
+                Message = $"The user {user!.FirstName} {user.LastName} doesn't exists in the database!"
+            };
+
+            _dataContext.Logs.Add(userLog);
+            _dataContext.SaveChanges();
+
             return null;
         }
 
         // Check password
         var passwordHash = PasswordHasher.ComputeHash(req.Password!, user.PasswordSalt!, _pepper, _iteration);
         if (user.Password != passwordHash)
+        {
+            var passwordLog = new Log
+            {
+                TimeStamp = DateTimeOffset.Now,
+                Message = $"The user {user.FirstName} {user.LastName} has entered an invalid password!"
+            };
+
+            _dataContext.Logs.Add(passwordLog);
+            _dataContext.SaveChanges();
+
             return null;
+        }
+
+        var secondLog = new Log
+        {
+            TimeStamp = DateTimeOffset.Now,
+            Message = $"The user {user.FirstName} {user.LastName} has successfully logged in with the password!"
+        };
+
+        _dataContext.Logs.Add(secondLog);
+        _dataContext.SaveChanges();
 
         // JWT token generation
         var token = GenerateToken(user.UserId);
@@ -81,7 +111,19 @@ public class AuthenticationService : IAuthenticationService
             Expires = DateTime.UtcNow + _JWTSettings.ValidityDuration,
             SigningCredentials = new SigningCredentials(mySecurityKey, SecurityAlgorithms.HmacSha256Signature)
         };
+
         var token = tokenHandler.CreateToken(tokenDescriptor);
+
+        var log = new Log
+        {
+            TimeStamp = DateTimeOffset.Now,
+            Message = $"Generate successfully the JWT token for userid {userId}!"
+        };
+
+        _dataContext.Logs.Add(log);
+        _dataContext.SaveChanges();
+
+
         return tokenHandler.WriteToken(token);
     }
 

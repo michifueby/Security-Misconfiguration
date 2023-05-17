@@ -11,6 +11,8 @@ namespace versex_home_automation.Controllers;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using versex_home_automation.Attributes;
+using versex_home_automation.Data;
+using versex_home_automation.Entities;
 using versex_home_automation.Models.Requests;
 using versex_home_automation.Services.User;
 

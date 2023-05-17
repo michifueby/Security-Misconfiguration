@@ -12,6 +12,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using Org.BouncyCastle.Ocsp;
 using versex_home_automation.Data;
+using versex_home_automation.Entities;
 using versex_home_automation.Models.Requests;
 using versex_home_automation.Models.Responses;
 using versex_home_automation.Services.Sensor;
@@ -48,6 +49,15 @@ public class ActorService : IActorService
             return new NoContentResult();
         }
 
+        var log = new Log
+        {
+            TimeStamp = DateTimeOffset.Now.DateTime,
+            Message = $"Get all actors from the database!"
+        };
+
+        _dataContext.Logs.Add(log);
+        _dataContext.SaveChanges();
+
         return new JsonResult(response) { StatusCode = StatusCodes.Status200OK };
     }
 
@@ -73,6 +83,15 @@ public class ActorService : IActorService
         {
             return new JsonResult(new { message = e.InnerException!.Message }) { StatusCode = StatusCodes.Status400BadRequest };
         }
+
+        var log = new Log
+        {
+            TimeStamp = DateTimeOffset.Now,
+            Message = $"Update actor {actor.Name} with the state {actor.State} and value {actor.Value}!"
+        };
+
+        _dataContext.Logs.Add(log);
+        _dataContext.SaveChanges();
 
         return new JsonResult(returnMessage) { StatusCode = StatusCodes.Status200OK };
     }
@@ -100,6 +119,16 @@ public class ActorService : IActorService
         {
             errorHappened = true;
             error = new JsonResult(new { message = "No such actor in database!" }) { StatusCode = StatusCodes.Status400BadRequest };
+
+            var log = new Log
+            {
+                TimeStamp = DateTimeOffset.Now,
+                Message = $"No such actor in database!"
+            };
+
+            _dataContext.Logs.Add(log);
+            _dataContext.SaveChanges();
+
             return null!;
         }
 

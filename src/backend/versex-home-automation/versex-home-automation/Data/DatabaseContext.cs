@@ -33,6 +33,8 @@ public partial class DatabaseContext : DbContext
 
     public virtual DbSet<Device> Devices { get; set; }
 
+    public virtual DbSet<Log> Logs { get; set; }
+
     #endregion
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -42,6 +44,8 @@ public partial class DatabaseContext : DbContext
             entity.ToTable("TBL_User");
 
             entity.Property(e => e.UserId).HasColumnType("int(11)");
+
+            entity.Property(e => e.RoleId).HasColumnType("int(11)");
 
             entity.Property(e => e.FirstName)
                 .IsRequired()
@@ -55,6 +59,10 @@ public partial class DatabaseContext : DbContext
                 .IsRequired()
                 .HasMaxLength(255);
 
+            entity.Property(e => e.PasswordSalt)
+                .IsRequired()
+                .HasMaxLength(255);
+
             entity.Property(e => e.UserName)
                 .IsRequired()
                 .HasMaxLength(255);
@@ -63,9 +71,6 @@ public partial class DatabaseContext : DbContext
                 .IsRequired()
                 .HasMaxLength(255);
         });
-
-        // Testdata:
-        // ...
 
         modelBuilder.Entity<Role>(entity =>
         {
@@ -102,6 +107,21 @@ public partial class DatabaseContext : DbContext
 
             entity.Property(e => e.Value)
                 .IsRequired();
+        });
+
+        modelBuilder.Entity<Log>(entity =>
+        {
+            entity.ToTable("TBL_Log");
+
+            entity.Property(e => e.LogId).HasColumnType("int(11)");
+
+            entity.Property(e => e.TimeStamp)
+                .IsRequired()
+                .HasColumnType("datetime");
+
+            entity.Property(e => e.Message)
+                .IsRequired()
+                .HasColumnType("text");
         });
 
         base.OnModelCreating(modelBuilder);

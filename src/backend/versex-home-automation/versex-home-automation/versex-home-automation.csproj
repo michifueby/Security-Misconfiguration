@@ -50,6 +50,7 @@
     <None Remove="Models\Options\" />
     <None Remove="Services\Sensor\" />
     <None Remove="Services\Actor\" />
+    <None Remove="Services\Log\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,5 +75,6 @@
     <Folder Include="Models\Options\" />
     <Folder Include="Services\Sensor\" />
     <Folder Include="Services\Actor\" />
+    <Folder Include="Services\Log\" />
   </ItemGroup>
 </Project>

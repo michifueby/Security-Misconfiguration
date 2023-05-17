@@ -31,9 +31,11 @@ public class UserService : IUserService
 
     private readonly ICommonService _commonService;
 
+    private readonly ILogger<UserService> _logger;
+
     #endregion
 
-    public UserService(DatabaseContext dataContext, ICommonService commonService)
+    public UserService(DatabaseContext dataContext, ICommonService commonService, ILogger<UserService> logger)
     {
         _dataContext = dataContext;
 
@@ -56,6 +58,23 @@ public class UserService : IUserService
         {
             return new NoContentResult();
         }
+
+
+        var log = new Log
+        {
+            TimeStamp = DateTimeOffset.Now,
+            Message = "Get all users from the database!"
+        };
+
+        try
+        {
+            _dataContext.Logs.Add(log);
+            _dataContext.SaveChanges();
+        }
+        catch (Microsoft.EntityFrameworkCore.DbUpdateException e)
+        {
+            return new JsonResult(new { message = e.InnerException!.Message }) { StatusCode = StatusCodes.Status400BadRequest };
+        };
 
         return new JsonResult(response) { StatusCode = StatusCodes.Status200OK };
     }
@@ -106,6 +125,15 @@ public class UserService : IUserService
             return new JsonResult(new { message = e.InnerException!.Message }) { StatusCode = StatusCodes.Status400BadRequest };
         };
 
+        var log = new Log
+        {
+            TimeStamp = DateTimeOffset.Now,
+            Message = $"Create a new user {user.FirstName} {user.LastName} and saves the user in the database!"
+        };
+
+        _dataContext.Logs.Add(log);
+        _dataContext.SaveChanges();
+
         return new JsonResult(returnMessage) { StatusCode = StatusCodes.Status201Created };
     }
 
@@ -116,6 +144,15 @@ public class UserService : IUserService
         if (errorHappened)
             return error;
 
+        var log = new Log
+        {
+            TimeStamp = DateTimeOffset.Now,
+            Message = $"Delete user {user.FirstName} {user.LastName} from the database!"
+        };
+
+        _dataContext.Logs.Add(log);
+        _dataContext.SaveChanges();
+       
         try
         {
             _dataContext.Users.Remove(user);
@@ -172,6 +209,15 @@ public class UserService : IUserService
             return new JsonResult(new { message = e.InnerException!.Message }) { StatusCode = StatusCodes.Status400BadRequest };
         }
 
+        var log = new Log
+        {
+            TimeStamp = DateTimeOffset.Now,
+            Message = $"Update user {user.FirstName} {user.LastName} and saves the updated user in the database!"
+        };
+
+        _dataContext.Logs.Add(log);
+        _dataContext.SaveChanges();
+
         return new JsonResult(returnMessage) { StatusCode = StatusCodes.Status200OK };
     }
 
@@ -193,7 +239,16 @@ public class UserService : IUserService
         {
             return new JsonResult(new { message = e.InnerException!.Message }) { StatusCode = StatusCodes.Status400BadRequest };
         }
-        
+
+        var log = new Log
+        {
+            TimeStamp = DateTimeOffset.Now,
+            Message = $"Change password from user {user.FirstName} {user.LastName} and saves the updated password in the database!"
+        };
+
+        _dataContext.Logs.Add(log);
+        _dataContext.SaveChanges();
+
         return new NoContentResult();
     }
 
@@ -221,6 +276,16 @@ public class UserService : IUserService
         {
             errorHappened = true;
             error = new JsonResult(new { message = "No such user in database!" }) { StatusCode = StatusCodes.Status400BadRequest };
+
+            var log = new Log
+            {
+                TimeStamp = DateTimeOffset.Now,
+                Message = $"No such user in database!"
+            };
+
+            _dataContext.Logs.Add(log);
+            _dataContext.SaveChanges();
+
             return null!;
         }
 
