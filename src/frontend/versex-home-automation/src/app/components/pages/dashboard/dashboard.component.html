@@ -1,6 +1,61 @@
+<div class="main">
+  <div class="banner">
+    <img src="../assets/img/Versex-logo.png" height="50"/>
+    <div style="width: 100%;"></div>
+    <app-user-dropdown username="Robert S."></app-user-dropdown>
+  </div>
+
+  <div class="container">
+    <div class="sidenav">
+      <div class="element">
+        <i class="pi pi-home" style="font-size: 1.2em;"></i>
+        Home
+      </div>
+      <div class="element" style="margin-top: 2%;">
+        <i class="pi pi-desktop" style="font-size: 1.2em;"></i>
+        Dashboard
+      </div>
+    </div>
+    <div class="content">
+      <div class="inner-content">
+        <div class="head-sytle">
+          <h1>Sensors</h1>
+        </div>
+          <app-sensor-dashboard></app-sensor-dashboard>
+        <div class="head-sytle">
+          <h1>Controls</h1>
+        </div>
+
+        <app-select-device></app-select-device>
+
+        <app-terminal></app-terminal>
+
+        <div class="controls">
+
+
+          <app-ac-device class="offset"></app-ac-device>
+          <app-ac-device class="offset"></app-ac-device>
+          <app-ac-device class="offset"></app-ac-device>
+          <app-ac-device class="offset"></app-ac-device>
+          <app-ac-device class="offset"></app-ac-device>
+          <app-ac-device class="offset"></app-ac-device>
+          <app-ac-device class="offset"></app-ac-device>
+          <app-ac-device class="offset"></app-ac-device>
+          <app-ac-device class="offset"></app-ac-device>
+          <app-ac-device class="offset"></app-ac-device>
+          <app-add-device></app-add-device>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<!--
 <div class="center-container">
   <p-panel header="Sensors">
-    <div class="actualSensorsContainer"> <!-- *ngIf="currentSensors.length > 0"-->
+    <div class="actualSensorsContainer"> <!-- *ngIf="currentSensors.length > 0"
       <p-knob [size]="200"></p-knob>
       <p-knob [size]="200"></p-knob>
       <p-knob [size]="200"></p-knob>
@@ -10,11 +65,11 @@
 
 <div class="center-container">
   <p-panel header="Actors">
-    <div class="actualSensorsContainer"> <!-- *ngIf="currentActors.length > 0" -->
+    <div class="actualSensorsContainer"> <!-- *ngIf="currentActors.length > 0"
       <p>
         Actors
       </p>
     </div>
   </p-panel>
 </div>
-
+-->

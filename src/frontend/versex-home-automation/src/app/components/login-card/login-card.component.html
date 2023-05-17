@@ -6,45 +6,39 @@
         <img src="assets\img\Versex-logo.png" width="55%" />
       </div>
     </div>
-
+    <div class="break-section"></div>
+    <div class="login-lable">
+      <h1>LOGIN</h1>
+    </div>
     <div class="break-section"></div>
   </div>
   <div class="card-content">
-        <div class="login-container">
-          <div class="login-content">
-            <form (ngSubmit)="onSubmitLogin()" name="editingForm" [formGroup]="loginForm" class="content">
-              <div class="inputStyle">
-                <i class="pi pi-user"></i>
-                <input type="text" placeholder="Username" formControlName="userName"/>
-              </div>
-              <div class="inputStyle">
-                <i class="pi pi-lock"></i>
-                <input
-                  id="inputPassword"
-                  type="password"
-                  formControlName="password"
-                  placeholder="Password"
-                />
-                <div
-                  class="toggle-visibility"
-                  (click)="togglePasswordVisibility()"
-                >
-                  <div *ngIf="!isVisible" class="eye">
-                    <i class="pi pi-eye"></i>
-                  </div>
-                  <div *ngIf="isVisible" class="eye-crossed">
-                    <i class="pi pi-eye-slash"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
+    <div class="login-container">
+      <div class="login-content">
+        <div class="inputStyle">
+          <i class="pi pi-user"></i>
+          <input type="text" placeholder="Username">
+        </div>
+        <div class="inputStyle">
+          <i class="pi pi-lock"></i>
+          <input id="inputPassword" type="password" placeholder="Password">
+          <div class="toggle-visibility" (click)="togglePasswordVisibility()">
+            <div *ngIf="!isVisible" class="eye">
+              <i class="pi pi-eye"></i>
+            </div>
+            <div *ngIf="isVisible" class="eye-crossed">
+              <i class="pi pi-eye-slash"></i>
+            </div>
           </div>
-          <div class="login-footer">
-            <button (click)="onSubmitLogin()">
-              <div class="button-content-wrapper">
-                <i class="pi pi-sign-in" style="padding-right: 5%"></i> Log in
-              </div>
-            </button>
-          </div>
+        </div>
       </div>
+      <div class="login-footer">
+        <button>
+          <div class="button-content-wrapper">
+            <i class="pi pi-sign-in" style="padding-right: 5%;"></i> Log in
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
