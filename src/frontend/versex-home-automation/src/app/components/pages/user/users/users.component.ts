@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -13,8 +13,9 @@ import { UserService } from 'src/app/services/user/user.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
 })
+
 export class UsersComponent {
 
   public displayedColumns: string[] = ['userId', 'userName', 'firstName', 'lastName', 'roles', 'edit'];
@@ -26,7 +27,7 @@ export class UsersComponent {
     private router: Router,
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
-    public tokenStorage: TokenStorageService
+    public tokenStorage: TokenStorageService,
     ) { }
 
   ngOnInit(): void {
@@ -166,7 +167,8 @@ export class UsersComponent {
 
   openSnackBarInfo(message: string, action: string) {
     this.snackBar.open(message, action,{
-      duration: 3000
+      duration: 3000,
+      panelClass: ['red-snackbar']
     });
   }
 
@@ -180,13 +182,13 @@ export class UsersComponent {
   openSnackBarError(message: string, action: string) {
     this.snackBar.open(message, action,{
       duration: 3000,
-      panelClass: ['errorStyle']
+      panelClass: ['errorStyle'],
     });
   }
 
   refresh(): void {
     this.getAllUser();
     console.log('list refreshed');
-    this.openSnackBarSuccess('Refreshed', 'OK')
+    this.openSnackBarInfo('Refreshed', '')
   }
 }

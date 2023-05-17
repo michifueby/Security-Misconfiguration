@@ -18,6 +18,7 @@ import { CardModule } from 'primeng/card';
 import { AvatarModule } from 'primeng/avatar';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { DropdownModule } from 'primeng/dropdown';
+import { ToastModule } from 'primeng/toast';
 import { PasswordModule } from 'primeng/password';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
@@ -91,7 +92,8 @@ import { LogHistoryComponent } from './components/pages/log/log-history/log-hist
     TableModule,
     InputTextModule,
     PasswordModule,
-    ChipModule
+    ChipModule,
+    ToastModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
