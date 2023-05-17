@@ -15,6 +15,7 @@ import { DeleteUserComponent } from '../delete-user/delete-user.component';
 })
 export class EditUserComponent {
   editUserForm!: FormGroup;
+  
   rolesList!: string[];
 
   constructor(
