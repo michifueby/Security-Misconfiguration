@@ -24,7 +24,7 @@ using versex_home_automation.Services.User;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure the serilog logger
+// Configure the serilog logger 
 var logger = new LoggerConfiguration()
   .ReadFrom.Configuration(builder.Configuration)
   .Enrich.FromLogContext()
