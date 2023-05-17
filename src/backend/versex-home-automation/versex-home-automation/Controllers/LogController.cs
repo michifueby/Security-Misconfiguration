@@ -33,7 +33,7 @@ public class LogController : Controller
         _logService = logService;
     }
 
-    [LoggedIn]
+    [Admin]
     [HttpGet("log/getAll")]
     public IActionResult GetAllLogs()
     {
