@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-add-device',
@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AddDeviceComponent {
 
+  @Output() onClicked = new EventEmitter()
+
+  click(){
+    this.onClicked.emit();
+
+  }
 }
