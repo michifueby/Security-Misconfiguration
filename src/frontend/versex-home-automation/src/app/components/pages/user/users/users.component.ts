@@ -31,12 +31,12 @@ export class UsersComponent {
 
   ngOnInit(): void {
     if (!this.tokenService.getUser()) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['']);
     }
 
-    /*if (!this.tokenService.getUser().roles.includes('Admin')) {
-      this.router.navigate(['/login']);
-    }*/
+    if (this.tokenService.getUser().roleId !== 1) {
+      this.router.navigate(['']);
+    }
 
     this.getAllUser();
   }
@@ -47,10 +47,10 @@ export class UsersComponent {
     return user.userName;
   }
 
-  openEditDialog(userId: number, userName: string, firstName: string, lastName: string, roles: Array<string>): void {
+  openEditDialog(userId: number, userName: string, email: string, firstName: string, lastName: string, roles: number): void {
     const dialogRef = this.dialog.open(EditUserComponent, {
       width: '25em',
-      data: {userId, userName, firstName, lastName, roles}
+      data: {userId, userName, email, firstName, lastName, roles}
     });
 
     dialogRef.afterClosed().subscribe(result => {

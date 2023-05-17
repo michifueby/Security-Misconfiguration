@@ -14,11 +14,11 @@ using System.Text.Json.Serialization;
 
 public class AuthenticateResponse
 {
-    public AuthenticateResponse(User user, IEnumerable<Role>? roles, string token)
+    public AuthenticateResponse(User user, int roleId, string token)
     {
         this.UserId = user.UserId;
         this.UserName = user.UserName;
-        this.Roles = roles;
+        this.RoleId = user.RoleId;
         this.Token = token;
     }
 
@@ -28,8 +28,7 @@ public class AuthenticateResponse
 
     public string? UserName { get; set; }
 
-    [JsonConverter(typeof(ItemConverterDecorator<RoleJsonConverter>))]
-    public IEnumerable<Role>? Roles { get; set; }
+    public int RoleId { get; set; }
 
     public string Token { get; set; }
 

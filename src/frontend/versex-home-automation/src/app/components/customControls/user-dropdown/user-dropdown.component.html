@@ -4,7 +4,7 @@
     <button class="dropdown-toggle" (click)="toggleDropdown()">{{username}}</button>
   </div>
   <ul class="dropdown-menu">
-    <li (click)="edit()">
+    <li (click)="edit()" *ngIf="this.userService.getUserRights()">
       <i class="pi pi-cog" style="margin-right: 20px;"></i>
       Edit Profile
     </li>

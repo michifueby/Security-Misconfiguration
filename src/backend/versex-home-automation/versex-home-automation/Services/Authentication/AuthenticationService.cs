@@ -20,6 +20,7 @@ using System.Security.Claims;
 using System.Text;
 using versex_home_automation.Helper;
 using versex_home_automation.Services.Common;
+using versex_home_automation.Entities.Enums;
 
 public class AuthenticationService : IAuthenticationService
 {
@@ -51,6 +52,17 @@ public class AuthenticationService : IAuthenticationService
     public AuthenticateResponse? Authenticate(AuthenticateRequest req)
     {
         var user = _dataContext.Users.SingleOrDefault(u => u.UserName == req.UserName);
+
+        if (user.RoleId.Equals(1))
+        {
+            var role = new Role();
+            role.RoleId = user.RoleId;
+        }
+        else if (user.RoleId.Equals(0))
+        {
+            var role = new Role();
+            role.RoleId = user.RoleId;
+        }
 
         // Check if user exists
         if (user == null)
@@ -95,7 +107,7 @@ public class AuthenticationService : IAuthenticationService
         // JWT token generation
         var token = GenerateToken(user.UserId);
 
-        return new AuthenticateResponse(user, user.Roles, token);
+        return new AuthenticateResponse(user, user.RoleId, token);
     }
 
     public string GenerateToken(int userId)

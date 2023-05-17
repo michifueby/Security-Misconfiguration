@@ -16,7 +16,6 @@ import { PanelModule } from 'primeng/panel';
 import { KnobModule } from 'primeng/knob';
 import { CardModule } from 'primeng/card';
 import { AvatarModule } from 'primeng/avatar';
-import { AvatarComponent } from './components/avatar/avatar.component';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { DropdownModule } from 'primeng/dropdown';
 import { PasswordModule } from 'primeng/password';
@@ -53,7 +52,6 @@ import { LogHistoryComponent } from './components/pages/log/log-history/log-hist
     LoginCardComponent,
     NotFoundComponent,
     DashboardComponent,
-    AvatarComponent,
     UsersComponent,
     CreateUserComponent,
     EditUserComponent,

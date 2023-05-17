@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token/token-storage.service';
 
 @Component({
@@ -6,15 +7,19 @@ import { TokenStorageService } from 'src/app/services/token/token-storage.servic
   templateUrl: './log-history.component.html',
   styleUrls: ['./log-history.component.scss']
 })
-export class LogHistoryComponent {
+export class LogHistoryComponent implements OnInit {
 
-  constructor(public tokenStorage: TokenStorageService) {
+  constructor(public tokenStorage: TokenStorageService, public router: Router) {
 
   }
 
-  public getFirstAndSecondNameFromUser(): string {
-    let user = this.tokenStorage.getUser()
+  ngOnInit(): void {
+    if (!this.tokenStorage.getUser()) {
+      this.router.navigate(['']);
+    }
+  }
 
-    return user.userName;
+  public getFirstAndSecondNameFromUser(): string {
+    return this.tokenStorage.getUser().userName;
   }
 }

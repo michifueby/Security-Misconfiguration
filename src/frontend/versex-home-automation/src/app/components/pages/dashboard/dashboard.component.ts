@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PanelModule } from 'primeng/panel';
 import { TokenStorageService } from 'src/app/services/token/token-storage.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,15 +12,12 @@ import { TokenStorageService } from 'src/app/services/token/token-storage.servic
 
 export class DashboardComponent implements OnInit {
 
-  constructor(public tokenStorage: TokenStorageService) { }
+  constructor(public tokenStorage: TokenStorageService, public router: Router, public userService: UserService) { }
 
   ngOnInit(): void {
-  }
-
-  public getFirstAndSecondNameFromUser(): string {
-    let user = this.tokenStorage.getUser()
-
-    return user.userName;
+    if (!this.tokenStorage.getUser()) {
+      this.router.navigate(['']);
+    }
   }
 
 }

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { environment } from 'src/enviroments/environment';
 import { UserData } from 'src/app/models/userData.model';
+import { TokenStorageService } from '../token/token-storage.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -13,7 +14,7 @@ const httpOptions = {
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public tokenStorage: TokenStorageService) { }
 
   getAllUser(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/user/getall`);
@@ -48,5 +49,16 @@ export class UserService {
       lastName: data.lastName,
       roles: data.roles
     }, httpOptions);
+  }
+
+  public getUserRights(): boolean {
+    if (this.tokenStorage.getUser().roleId !== 1)
+      return false;
+
+    return true;
+  }
+
+  public getFirstAndSecondNameFromUser(): string {
+    return this.tokenStorage.getUser().userName;
   }
 }

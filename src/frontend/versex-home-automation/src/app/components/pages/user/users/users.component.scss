@@ -6,6 +6,11 @@
   width: 100%;
 }
 
+::ng-deep .infoStyle{
+  background-color: #c86a6a !important;
+  color: #FFFFFF !important;
+}
+
 .nav{
   display: flex;
   justify-content: safe;

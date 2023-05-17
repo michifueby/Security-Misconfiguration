@@ -10,7 +10,6 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token/token-storage.service';
-import { HideContentService } from 'src/app/services/hide-content/hide-content.service';
 import { User } from 'src/app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -20,7 +19,7 @@ import { AuthenticationService } from 'src/app/services/authentication/authentic
   selector: 'app-login-card',
   templateUrl: './login-card.component.html',
   styleUrls: ['./login-card.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated,
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class LoginCardComponent implements OnInit {
@@ -32,7 +31,6 @@ export class LoginCardComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private tokenStorage: TokenStorageService,
     private dialog: MatDialog,
-    private hideContentService: HideContentService
   ) {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
 
@@ -90,7 +88,7 @@ export class LoginCardComponent implements OnInit {
     this._snackBar.open(message, action, {
       duration: 5000,
       // Load specific style
-      panelClass: [alertStyle],
+      panelClass: [alertStyle]
     });
   }
 

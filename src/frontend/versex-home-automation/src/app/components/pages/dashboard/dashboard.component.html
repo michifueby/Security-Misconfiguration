@@ -2,7 +2,7 @@
   <div class="banner">
     <img src="../assets/img/Versex-logo.png" height="50"/>
     <div style="width: 100%;"></div>
-    <app-user-dropdown username="{{getFirstAndSecondNameFromUser()}}"></app-user-dropdown>
+    <app-user-dropdown username="{{this.userService.getFirstAndSecondNameFromUser()}}"></app-user-dropdown>
   </div>
 
   <div class="container">
@@ -15,7 +15,7 @@
         <i class="pi pi-desktop" style="font-size: 1.2em;"></i>
         Dashboard
       </div>
-      <div class="element" style="margin-top: 2%;" [routerLink]="'/logs'">
+      <div *ngIf="this.userService.getUserRights()" class="element" style="margin-top: 2%;" [routerLink]="'/logs'">
         <i class="pi pi-server" style="font-size: 1.2em;"></i>
         Log History
       </div>

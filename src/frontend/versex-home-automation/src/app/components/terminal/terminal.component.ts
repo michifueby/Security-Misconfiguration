@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { LogService } from 'src/app/services/log/log.service';
 import { Log } from 'src/app/models/log.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,12 +8,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './terminal.component.html',
   styleUrls: ['./terminal.component.scss']
 })
-export class TerminalComponent {
+export class TerminalComponent implements OnInit {
   public dataSource!: Array<Log>;
 
   constructor(public logService: LogService, public snackBar: MatSnackBar) {
     this.getAllLogs();
-    console.log(this.dataSource);
+  }
+  ngOnInit(): void {
+    this.getAllLogs();
   }
 
   getAllLogs(): void {
