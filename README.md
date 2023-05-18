@@ -9,7 +9,19 @@ Link: http://localhost/phpmyadmin/
 5. Import database schema from "database/versex-home-automation-db.sql"
 
 ## Backend
-1. Start the backend service from Visual Studio <br>
+1. Add following User-Secret in Visual Studio:
+```
+{
+    "ConnectionStrings": {
+        "DBConnection": "server=localhost;port=3306;user=versex;password=hs@hK5D7I(p2I[hu;database=versex-home-automation-db;"
+    },
+    "JWTSettings": {
+        "JWT_VALIDITY_DURATION": "08:00:00",
+        "JWT_SECRET": "eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY1NTI5Njc4MiwiaWF0IjoxNjU1Mjk2NzgyfQ"
+    }
+}
+```
+2. Start the backend service from Visual Studio <br>
 Link: https://localhost:7227/swagger/index.html
 
 ## Frontend
