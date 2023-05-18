@@ -44,6 +44,7 @@ import { TerminalComponent } from './components/terminal/terminal.component';
 import { SelectDeviceComponent } from './components/customControls/select-device/select-device.component';
 import { DeviceDropdownComponent } from './components/customControls/device-dropdown/device-dropdown.component';
 import { LogHistoryComponent } from './components/pages/log/log-history/log-history.component';
+import { MacInputComponent } from './components/customControls/mac-input/mac-input.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { LogHistoryComponent } from './components/pages/log/log-history/log-hist
     TerminalComponent,
     SelectDeviceComponent,
     DeviceDropdownComponent,
-    LogHistoryComponent
+    LogHistoryComponent,
+    MacInputComponent
   ],
   imports: [
     AppRoutingModule,

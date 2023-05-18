@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PanelModule } from 'primeng/panel';
 import { TokenStorageService } from 'src/app/services/token/token-storage.service';
+import { Device } from '../../customControls/select-device/select-device.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +20,23 @@ export class DashboardComponent implements OnInit {
     let user = this.tokenStorage.getUser()
 
     return user.userName;
+  }
+
+  showDeviceDialog = false;
+  devices:Device[] = [];
+
+  addDevice(device:Device){
+    this.devices.push(device);
+    console.log(this.devices);
+    this.showDeviceDialog = false;
+  }
+
+  displayDeviceDialog() {
+    this.showDeviceDialog = true;
+  }
+
+  closeComponent(){
+    this.showDeviceDialog = false;
   }
 
 }

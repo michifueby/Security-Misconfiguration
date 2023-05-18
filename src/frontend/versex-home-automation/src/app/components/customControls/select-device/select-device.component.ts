@@ -1,13 +1,9 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 
-interface Type {
-  desc: String
-}
-
-interface Device {
-  name: String
-  mac: String
-  type: String
+export interface Device {
+  name:string;
+  mac:string;
+  type:string;
 }
 
 @Component({
@@ -18,48 +14,35 @@ interface Device {
 
 export class SelectDeviceComponent {
 
-  @ViewChild('MAC') macRef!: ElementRef;
+  @ViewChild('alias') aliasRef!: ElementRef;
+  @ViewChild('dialog') dialogRef!: ElementRef;
 
-  @HostListener('keydown', ['$event'])
-  onKeyDown(event: KeyboardEvent) {
-    const allowedKeys = ['Backspace', 'Tab', 'Delete', 'ArrowLeft', 'ArrowRight'];
-    const key = event.key;
+  deviceType:string = "ac";
 
-    if (!this.isValidKey(key) && !allowedKeys.includes(key)) {
-      event.preventDefault();
-    }
-  }
+  macAdress:any = "";
 
-  @HostListener('input')
-  onInput() {
-    const mac = this.macRef.nativeElement.value;
-    const formattedMac = this.formatMac(mac);
-    this.macRef.nativeElement.value = formattedMac;
-  }
+  @Output() onAddDeviceClicked = new EventEmitter<Device>();
+  @Output() onCloseClicked = new EventEmitter();
 
-  isValidKey(key: string): boolean {
-    const regex = /^[0-9a-fA-F]$/;
-    return regex.test(key);
-  }
-
-  formatMac(mac: string): string {
-    const macs = mac.replace(/:/g, '').toUpperCase();
-    const chunks = this.chunk(macs, 2);
-    return chunks.join(':');
-  }
-
-  chunk(str: string, n: number): string[] {
-    const ret = [];
-    let i;
-    const len = str.length;
-
-    for (i = 0; i < len; i += n) {
-      ret.push(str.substr(i, n));
+  addDevice(){
+    var device:Device = {
+      name: this.aliasRef.nativeElement.value,
+      mac : this.macAdress,
+      type: this.deviceType
     }
 
-    return ret;
+    this.onAddDeviceClicked.emit(device);
   }
 
+  onMacChanged(mac:string) {
+    this.macAdress = mac
+  }
 
+  close() {
+    this.onCloseClicked.emit();
+  }
 
+  setDevice(type:any) {
+    this.deviceType = type;
+  }
 }

@@ -1,6 +1,13 @@
-<div class="container">
+<div class="container" #dialog>
   <div class="header">
-    Add Device
+    <div style="width: 15em; margin-left: 1%;">
+      Add Device
+    </div>
+    <div style="width: 100%;"></div>
+    <button (click)="close()">
+      <i class="pi pi-times"></i>
+    </button>
+
   </div>
   <div class="body">
     <div class="content">
@@ -9,7 +16,7 @@
           Alias:
         </div>
         <div class="input">
-          <input type="text" />
+          <input type="text" #alias/>
         </div>
       </div>
       <div class="entry">
@@ -17,7 +24,7 @@
           MAC:
         </div>
         <div class="input">
-          <input type="text" maxlength="17" #MAC/>
+          <app-mac-input (macAddressChange)="onMacChanged($event)"></app-mac-input>
         </div>
       </div>
       <div class="entry">
@@ -25,12 +32,12 @@
           Type:
         </div>
         <div class="input">
-          <app-device-dropdown></app-device-dropdown>
+          <app-device-dropdown (onSelected)="setDevice($event.valueOf())" ></app-device-dropdown>
         </div>
       </div>
 
       <div class="add-device-button">
-        <button>
+        <button (click)="addDevice()">
           <i class="pi pi-plus"></i>
           Add Device
         </button>

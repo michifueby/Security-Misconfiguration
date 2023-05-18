@@ -29,22 +29,13 @@
         <div class="head-sytle">
           <h1>Controls</h1>
         </div>
-
-        <app-select-device></app-select-device>
-
         <div class="controls">
-
-          <app-ac-device class="offset"></app-ac-device>
-          <app-ac-device class="offset"></app-ac-device>
-          <app-ac-device class="offset"></app-ac-device>
-          <app-ac-device class="offset"></app-ac-device>
-          <app-ac-device class="offset"></app-ac-device>
-          <app-ac-device class="offset"></app-ac-device>
-          <app-ac-device class="offset"></app-ac-device>
-          <app-ac-device class="offset"></app-ac-device>
-          <app-ac-device class="offset"></app-ac-device>
-          <app-ac-device class="offset"></app-ac-device>
-          <app-add-device></app-add-device>
+          <app-select-device *ngIf="showDeviceDialog" (onCloseClicked)="closeComponent()" (onAddDeviceClicked)="addDevice($event)"></app-select-device>
+          <div *ngFor="let d of devices">
+            <app-ac-device *ngIf="d.type == 'ac'" aliasName="{{d.name}}"></app-ac-device>
+            <app-light-device *ngIf="d.type == 'lightswitch'" aliasName="{{d.name}}"></app-light-device>
+          </div>
+          <app-add-device (onClicked)="displayDeviceDialog()"></app-add-device>
         </div>
       </div>
 

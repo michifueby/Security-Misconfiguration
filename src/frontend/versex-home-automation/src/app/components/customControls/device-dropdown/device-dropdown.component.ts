@@ -1,26 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-device-dropdown',
   templateUrl: './device-dropdown.component.html',
   styleUrls: ['./device-dropdown.component.scss']
 })
-export class DeviceDropdownComponent {
+export class DeviceDropdownComponent implements OnInit{
+
+
+  selectedOption?: string;
+
+  @Output() onSelected = new EventEmitter<string>();
 
   options = [
-    {value: 'option1', label: 'Option 1'},
-    {value: 'option2', label: 'Option 2'},
-    {value: 'option3', label: 'Option 3'},
+    {value: 'ac', label: 'Air Conditioner'},
+    {value: 'lightswitch', label: 'Light Switch'},
+    {value: 'door', label: 'Door'},
   ];
 
-  selectedOption: any;
-
-  constructor() { }
-
   ngOnInit(): void {
+    this.selectedOption = 'ac';
   }
 
-  onSelect(optionValue: any): void {
-    this.selectedOption = this.options.find(option => option.value === optionValue);
+
+  select(selected:string) {
+    this.selectedOption = this.options.find(option => option.value === selected)?.value;
+    this.onSelected.emit(this.selectedOption);
   }
 }
