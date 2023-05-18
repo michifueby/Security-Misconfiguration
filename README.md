@@ -9,6 +9,6 @@ Link: https://localhost:7227/swagger/index.html
 Link: http://localhost:4200/dashboard
 
 ## Database
-1. Install XAMPP
+1. Install XAMPP (link: https://www.apachefriends.org/de/index.html)
 2. Start the ApacheWebserver and MYSQL Database <br>
 Link: http://localhost/phpmyadmin/
