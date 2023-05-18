@@ -5,6 +5,7 @@
 2. Start the ApacheWebserver and MYSQL Database <br>
 Link: http://localhost/phpmyadmin/
 3. Create new user 'versex' in phpmyadmin
+4. Create new database with the name 'versex-home-automation-db'
 
 ## Backend
 1. Start the backend service from Visual Studio <br>
