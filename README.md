@@ -13,5 +13,5 @@ Link: http://localhost/phpmyadmin/
 Link: https://localhost:7227/swagger/index.html
 
 ## Frontend
-1. Start the frontend with the command ```ng serve --open <br>
+1. Start the frontend with the command ```ng serve --open``` <br>
 Link: http://localhost:4200/dashboard
