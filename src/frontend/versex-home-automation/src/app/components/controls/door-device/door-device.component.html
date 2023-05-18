@@ -9,6 +9,19 @@
     <div class="image">
       <canvas width="100" height="100" #doorCanvas></canvas>
     </div>
+    <div class="doorControl">
+      <div class="label">
+        Status:
+      </div>
+      <div class="controlUnit">
+        <div *ngIf="isActive" class="status locked">
+          Locked
+        </div>
+        <div *ngIf="!isActive" class="status unlocked">
+          Unlocked
+        </div>
+      </div>
+    </div>
   </div>
   <div class="footer">
     <div class="toggle">

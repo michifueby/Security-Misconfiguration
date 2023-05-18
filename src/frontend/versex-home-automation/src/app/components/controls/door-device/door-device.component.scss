@@ -1,12 +1,10 @@
 .card {
   background-color: #071426;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   width: 18em;
   border-radius: 25px;
   border: 1px solid #7fffd4;
+  min-height: 23em;
 }
 
 .header {
@@ -42,6 +40,54 @@
   font-family: sans-serif;
   font-size: 1.2em;
   margin-bottom: 0.5em;
+}
+
+.container .doorControl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.status {
+  height: 30px;
+  background-color: #000000;
+  display: flex;
+  width: 85%;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.status i {
+  margin-right: 5px;
+}
+
+.locked {
+  background-color: #8c0000;
+}
+
+.unlocked {
+  background-color: #7fffd4;
+  color: #071426;
+}
+
+.label {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-family: sans-serif;
+  font-size: 1.5em;
+}
+
+.controlUnit {
+  margin-bottom: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container .image {

@@ -1,12 +1,10 @@
 .card {
   background-color: #071426;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   width: 18em;
   border-radius: 25px;
   border: 1px solid #7fffd4;
+  min-height: 23em;
 }
 
 .header {
