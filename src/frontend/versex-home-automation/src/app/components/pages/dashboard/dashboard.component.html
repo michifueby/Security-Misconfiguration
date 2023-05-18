@@ -30,10 +30,12 @@
           <h1>Controls</h1>
         </div>
         <div class="controls">
+          <app-door-device></app-door-device>
           <app-select-device *ngIf="showDeviceDialog" (onCloseClicked)="closeComponent()" (onAddDeviceClicked)="addDevice($event)"></app-select-device>
           <div *ngFor="let d of devices">
             <app-ac-device *ngIf="d.type == 'ac'" aliasName="{{d.name}}"></app-ac-device>
             <app-light-device *ngIf="d.type == 'lightswitch'" aliasName="{{d.name}}"></app-light-device>
+            <app-door-device *ngIf="d.type == 'door'"></app-door-device>
           </div>
           <app-add-device (onClicked)="displayDeviceDialog()"></app-add-device>
         </div>

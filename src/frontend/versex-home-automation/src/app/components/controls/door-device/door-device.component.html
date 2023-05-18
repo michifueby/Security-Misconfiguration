@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="header">
+    <h1>{{aliasName}}</h1>
+  </div>
+  <div class="container">
+    <div class="deviceType">
+      Type: Door
+    </div>
+    <div class="image">
+      <canvas width="100" height="100" #doorCanvas></canvas>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="toggle">
+      <button (click)="toggleDoor()" *ngIf="!isActive" class="buttonOn">
+        <i class="pi pi-unlock"></i>
+      </button>
+      <button (click)="toggleDoor()" *ngIf="isActive" class="buttonOff">
+        <i class="pi pi-lock"></i>
+      </button>
+    </div>
+  </div>
+</div>

@@ -90,14 +90,5 @@ export class AcDeviceComponent implements AfterViewInit {
     ctx.lineTo(65, 100);
     ctx.stroke()
     ctx.closePath()
-
-
-
-
-
-
-
-
   }
-
 }
