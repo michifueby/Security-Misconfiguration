@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CreateUserComponent } from 'src/app/components/create-user/create-user.component';
 import { ToastComponent } from 'src/app/components/customControls/notification-toast/toast/toast.component';
@@ -16,10 +15,15 @@ import { UserService } from 'src/app/services/user/user.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
 })
-
 export class UsersComponent {
-
-  public displayedColumns: string[] = ['userId', 'userName', 'firstName', 'lastName', 'roles', 'edit'];
+  public displayedColumns: string[] = [
+    'userId',
+    'userName',
+    'firstName',
+    'lastName',
+    'roles',
+    'edit',
+  ];
 
   public dataSource!: Array<User>;
 
@@ -30,15 +34,15 @@ export class UsersComponent {
     private userService: UserService,
     private router: Router,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar,
-    public tokenStorage: TokenStorageService,
-    ) {
-      this.toast = new ToastComponent();
-    }
+    public tokenStorage: TokenStorageService
+  ) {
+  }
 
   private toast!: ToastComponent;
 
   ngOnInit(): void {
+    this.toast = new ToastComponent();
+
     if (!this.tokenService.getUser()) {
       this.router.navigate(['']);
     }
@@ -51,25 +55,32 @@ export class UsersComponent {
   }
 
   public getFirstAndSecondNameFromUser(): string {
-    let user = this.tokenStorage.getUser()
+    let user = this.tokenStorage.getUser();
 
     return user.userName;
   }
 
-  openEditDialog(userId: number, userName: string, email: string, firstName: string, lastName: string, roles: number): void {
+  openEditDialog(
+    userId: number,
+    userName: string,
+    email: string,
+    firstName: string,
+    lastName: string,
+    roles: number
+  ): void {
     const dialogRef = this.dialog.open(EditUserComponent, {
       width: '25em',
-      data: {userId, userName, email, firstName, lastName, roles}
+      data: { userId, userName, email, firstName, lastName, roles },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined){
-        if (result == 'delete'){
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result !== undefined) {
+        if (result == 'delete') {
           this.deleteUser(userId);
           return;
         }
 
-        if (result != 'canceled'){
+        if (result != 'canceled') {
           this.updateUser(userId, result);
         }
       }
@@ -78,11 +89,11 @@ export class UsersComponent {
 
   openCreateDialog(): void {
     const dialogRef = this.dialog.open(CreateUserComponent, {
-      width: '25em'
+      width: '25em',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result != 'canceled' && result !== undefined){
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != 'canceled' && result !== undefined) {
         this.createUser(result);
       }
     });
@@ -91,11 +102,11 @@ export class UsersComponent {
   openResetPasswordDialog(userId: number, userName: string): void {
     const dialogRef = this.dialog.open(ResetPasswordComponent, {
       width: '25em',
-      data: {userName: userName},
+      data: { userName: userName },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result != 'canceled' && result !== undefined){
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != 'canceled' && result !== undefined) {
         this.resetPasswordUser(userId, result);
       }
     });
@@ -104,17 +115,15 @@ export class UsersComponent {
   getAllUser(): void {
     this.userService.getAllUser().subscribe({
       next: (value) => {
-        console.log(value.users);
+        console.log('get all user');
         this.dataSource = value.users;
       },
       complete: () => {
-        console.log('loaded all User')
+        console.log('loaded all User');
       },
       error: (err) => {
         console.log(err);
-        this.toastText = 'Something went wrong!';
-        this.toast.showToast();
-      }
+      },
     });
   }
 
@@ -123,14 +132,10 @@ export class UsersComponent {
       complete: () => {
         this.getAllUser();
         console.log('updated user');
-        this.toastText = 'User updated!';
-        this.toast.showToast();
       },
       error: (err) => {
         console.log(err);
-        this.toastText = 'Something went wrong!';
-        this.toast.showToast();
-      }
+      },
     });
   }
 
@@ -139,14 +144,10 @@ export class UsersComponent {
       complete: () => {
         this.getAllUser();
         console.log('user deleted');
-        this.toastText = 'User deleted!';
-        this.toast.showToast();
       },
       error: (err) => {
         console.log(err);
-        this.toastText = 'Something went wrong!';
-        this.toast.showToast();
-      }
+      },
     });
   }
 
@@ -156,14 +157,10 @@ export class UsersComponent {
       complete: () => {
         this.getAllUser();
         console.log('user created');
-        this.toastText = 'User created!';
-        this.toast.showToast();
       },
       error: (err) => {
         console.log(err);
-        this.toastText = 'Something went wrong!';
-        this.toast.showToast();
-      }
+      },
     });
   }
 
@@ -172,20 +169,15 @@ export class UsersComponent {
       complete: () => {
         this.getAllUser();
         console.log('password changed');
-        this.toastText = 'Password changed!';
-        this.toast.showToast();
       },
       error: (err) => {
-        this.toastText = 'Something went wrong!';
-        this.toast.showToast();
-      }
+        console.log('Something went wrong!');
+      },
     });
   }
 
   refresh(): void {
     this.getAllUser();
     console.log('list refreshed');
-    this.toastText = 'Refreshed!';
-    this.toast.showToast();
   }
 }

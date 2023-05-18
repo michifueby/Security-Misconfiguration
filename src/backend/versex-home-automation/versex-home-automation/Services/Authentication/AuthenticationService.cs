@@ -53,6 +53,21 @@ public class AuthenticationService : IAuthenticationService
     {
         var user = _dataContext.Users.SingleOrDefault(u => u.UserName == req.UserName);
 
+        // Check if user exists
+        if (user == null)
+        {
+            var userLog = new Log
+            {
+                TimeStamp = DateTimeOffset.Now,
+                Message = $"The user {req.UserName} doesn't exists in the database!"
+            };
+
+            _dataContext.Logs.Add(userLog);
+            _dataContext.SaveChanges();
+
+            return null;
+        }
+
         if (user.RoleId.Equals(1))
         {
             var role = new Role();
@@ -62,21 +77,6 @@ public class AuthenticationService : IAuthenticationService
         {
             var role = new Role();
             role.RoleId = user.RoleId;
-        }
-
-        // Check if user exists
-        if (user == null)
-        {
-            var userLog = new Log
-            {
-                TimeStamp = DateTimeOffset.Now,
-                Message = $"The user {user!.FirstName} {user.LastName} doesn't exists in the database!"
-            };
-
-            _dataContext.Logs.Add(userLog);
-            _dataContext.SaveChanges();
-
-            return null;
         }
 
         // Check password

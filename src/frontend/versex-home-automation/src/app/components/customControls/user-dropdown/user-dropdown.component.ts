@@ -1,26 +1,35 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token/token-storage.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { ToastComponent } from '../notification-toast/toast/toast.component';
 
 @Component({
   selector: 'app-user-dropdown',
   templateUrl: './user-dropdown.component.html',
-  styleUrls: ['./user-dropdown.component.scss']
+  styleUrls: ['./user-dropdown.component.scss'],
 })
-export class UserDropdownComponent implements OnInit{
+export class UserDropdownComponent implements OnInit {
+  private toast!: ToastComponent;
 
-  @Input() username = "<username>"
+  @Input() username = '<username>';
   @Output() onLogoutClicked = new EventEmitter();
   @Output() onEditClicked = new EventEmitter();
 
-  constructor(public router: Router, public tokenStorage: TokenStorageService, private snackBar: MatSnackBar, public userService: UserService) {
+  constructor(
+    public router: Router,
+    public tokenStorage: TokenStorageService,
+    public userService: UserService
+  ) {
   }
+
+  public toastText!: string;
 
   isDropdownOpen = false;
 
   public ngOnInit(): void {
+    this.toast = new ToastComponent();
+
     if (this.tokenStorage.getUser().userId !== 1)
       this.router.navigateByUrl('dashboard');
   }
@@ -36,15 +45,13 @@ export class UserDropdownComponent implements OnInit{
   logout() {
     //this.onLogoutClicked.emit();
     if (this.tokenStorage.getToken() === null) {
-      this.openSnackBar(
-        'Logout',
-        'You are already logged out!',
-        'successSnackBar'
-      );
+      this.toastText = 'You are already logged out!';
+      this.toast.showToast();
     } else {
       this.tokenStorage.signOut();
+      this.toastText = 'Logout successful!!';
+      this.toast.showToast();
       this.router.navigateByUrl('');
-      this.openSnackBar('Logout', 'Logout successful!', 'successSnackBar');
     }
     console.log('Logout clicked');
   }
@@ -54,14 +61,4 @@ export class UserDropdownComponent implements OnInit{
     this.router.navigateByUrl('users');
     console.log('edit clicked');
   }
-
-  // SnackBar for displaying messages
-  openSnackBar(message: string, action: string, alertStyle: string) {
-    this.snackBar.open(message, action, {
-      duration: 5000,
-      // Load specific style
-      panelClass: [alertStyle],
-    });
-  }
-
 }
