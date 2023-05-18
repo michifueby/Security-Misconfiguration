@@ -1,4 +1,4 @@
-# Security-Misconfiguration
+# Security-Misconfiguration - VersexHomeAutomation Application
 
 ## Database
 1. Install XAMPP (link: https://www.apachefriends.org/de/index.html)
