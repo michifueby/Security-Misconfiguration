@@ -4,6 +4,7 @@
 1. Install XAMPP (link: https://www.apachefriends.org/de/index.html)
 2. Start the ApacheWebserver and MYSQL Database <br>
 Link: http://localhost/phpmyadmin/
+3. Create new user 'versex' in phpmyadmin
 
 ## Backend
 1. Start the backend service from Visual Studio <br>
