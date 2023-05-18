@@ -15,24 +15,28 @@ import { DeleteUserComponent } from '../delete-user/delete-user.component';
 })
 export class EditUserComponent {
   editUserForm!: FormGroup;
-  
+
   rolesList!: string[];
 
   constructor(
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<EditUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: UserData
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
     this.rolesList = ['Admin', 'User'];
+
+    console.log(this.data);
 
     this.editUserForm = new FormGroup({
       userName: new FormControl(this.data.userName, [Validators.required]),
       email: new FormControl(this.data.email, [Validators.required]),
       firstName: new FormControl(this.data.firstName, [Validators.required]),
       lastName: new FormControl(this.data.lastName, [Validators.required]),
-      roles: new FormControl(this.data.roles, [Validators.required]),
+      roles: new FormControl(this.data.roles === 1 ? 'Admin' : 'User', [
+        Validators.required,
+      ]),
     });
   }
 

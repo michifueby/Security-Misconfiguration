@@ -20,6 +20,7 @@ using System.Security.Claims;
 using System.Text;
 using versex_home_automation.Helper;
 using versex_home_automation.Services.Common;
+using versex_home_automation.Entities.Enums;
 
 public class AuthenticationService : IAuthenticationService
 {
@@ -58,13 +59,24 @@ public class AuthenticationService : IAuthenticationService
             var userLog = new Log
             {
                 TimeStamp = DateTimeOffset.Now,
-                Message = $"The user {user!.FirstName} {user.LastName} doesn't exists in the database!"
+                Message = $"The user {req.UserName} doesn't exists in the database!"
             };
 
             _dataContext.Logs.Add(userLog);
             _dataContext.SaveChanges();
 
             return null;
+        }
+
+        if (user.RoleId.Equals(1))
+        {
+            var role = new Role();
+            role.RoleId = user.RoleId;
+        }
+        else if (user.RoleId.Equals(0))
+        {
+            var role = new Role();
+            role.RoleId = user.RoleId;
         }
 
         // Check password
@@ -86,7 +98,7 @@ public class AuthenticationService : IAuthenticationService
         var secondLog = new Log
         {
             TimeStamp = DateTimeOffset.Now,
-            Message = $"The user {user.FirstName} {user.LastName} has successfully logged in with the password!"
+            Message = $"The user {user.FirstName} {user.LastName} has successfully logged in with the password hash {user.Password}!"
         };
 
         _dataContext.Logs.Add(secondLog);
@@ -95,7 +107,7 @@ public class AuthenticationService : IAuthenticationService
         // JWT token generation
         var token = GenerateToken(user.UserId);
 
-        return new AuthenticateResponse(user, user.Roles, token);
+        return new AuthenticateResponse(user, user.RoleId, token);
     }
 
     public string GenerateToken(int userId)

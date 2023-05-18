@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/pages/login-register/login.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
-import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { LoginCardComponent } from './components/customComponents/login-card/login-card.component';
 import { authInterceptorProviders } from './helper/interceptor/auth-interceptor.service';
 import { ButtonModule } from 'primeng/button';
@@ -18,6 +17,7 @@ import { CardModule } from 'primeng/card';
 import { AvatarModule } from 'primeng/avatar';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { DropdownModule } from 'primeng/dropdown';
+import { ToastModule } from 'primeng/toast';
 import { PasswordModule } from 'primeng/password';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
@@ -47,6 +47,8 @@ import { ResetPasswordComponent } from './components/user-management/reset-passw
 import { AcDeviceUserComponent } from './components/controls/actuators/user/ac-device-user/ac-device-user.component';
 import { LightDeviceUserComponent } from './components/controls/actuators/user/light-device-user/light-device-user.component';
 import { DoorDeviceUserComponent } from './components/controls/actuators/user/door-device-user/door-device-user.component';
+import { ToastComponent } from './components/customControls/notification-toast/toast/toast.component';
+import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -77,7 +79,8 @@ import { DoorDeviceUserComponent } from './components/controls/actuators/user/do
     ResetPasswordComponent,
     AcDeviceUserComponent,
     LightDeviceUserComponent,
-    DoorDeviceUserComponent
+    DoorDeviceUserComponent,
+    ToastComponent
   ],
   imports: [
     AppRoutingModule,
@@ -101,6 +104,7 @@ import { DoorDeviceUserComponent } from './components/controls/actuators/user/do
     InputTextModule,
     PasswordModule,
     ChipModule,
+    ToastModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

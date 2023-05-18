@@ -4,9 +4,9 @@
     <button class="dropdown-toggle" (click)="toggleDropdown()">{{username}}</button>
   </div>
   <ul class="dropdown-menu">
-    <li (click)="edit()">
+    <li (click)="edit()" *ngIf="this.userService.getIsUserAdmin()">
       <i class="pi pi-cog" style="margin-right: 20px;"></i>
-      Edit Profile
+      Edit Profiles
     </li>
     <li (click)="logout()">
       <i class="pi pi-arrow-circle-left" style="margin-right: 20px;"></i>

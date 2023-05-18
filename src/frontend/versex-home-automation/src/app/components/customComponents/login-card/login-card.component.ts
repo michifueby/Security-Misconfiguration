@@ -1,45 +1,39 @@
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token/token-storage.service';
-import { HideContentService } from 'src/app/services/hide-content/hide-content.service';
 import { User } from 'src/app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { ToastComponent } from '../customControls/notification-toast/toast/toast.component';
 
 @Component({
   selector: 'app-login-card',
   templateUrl: './login-card.component.html',
   styleUrls: ['./login-card.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated,
+  encapsulation: ViewEncapsulation.None,
 })
-
 export class LoginCardComponent implements OnInit {
+  private toast!: ToastComponent;
 
   constructor(
-    private _snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
     private tokenStorage: TokenStorageService,
-    private dialog: MatDialog,
-    private hideContentService: HideContentService
+    private dialog: MatDialog
   ) {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+    this.toast = new ToastComponent();
+
+    this.returnUrl =
+      this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
 
     if (this.tokenStorage.getUser() != null) {
       this.router.navigate(['/']);
     }
   }
+
+  public toastText!: string;
 
   loginForm!: FormGroup;
 
@@ -59,11 +53,8 @@ export class LoginCardComponent implements OnInit {
   onSubmitLogin() {
     // Check if username or password null
     if (this.loginForm.invalid) {
-      this.openSnackBar(
-        'Login',
-        'Enter a password and an username!',
-        'errorSnackBar'
-      );
+      this.toastText = 'Enter a password and an username!';
+      this.toast.showToast();
       return;
     }
     this.authenticationService
@@ -73,25 +64,14 @@ export class LoginCardComponent implements OnInit {
           this.tokenStorage.saveToken(value.token);
           this.tokenStorage.saveUser(value);
           this.router.navigate([this.returnUrl]);
-          this.openSnackBar('Login', 'Login successful!', 'successSnackBar');
+          this.toastText = 'Login successful!';
+          this.toast.showToast();
         },
         error: (err) => {
-          this.openSnackBar(
-            'Login',
-            'Error to connecting to the server!',
-            'errorSnackBar'
-          );
+          this.toastText = 'Invalid username or password!';
+          this.toast.showToast();
         },
       });
-  }
-
-  // SnackBar for displaying messages
-  openSnackBar(message: string, action: string, alertStyle: string) {
-    this._snackBar.open(message, action, {
-      duration: 5000,
-      // Load specific style
-      panelClass: [alertStyle],
-    });
   }
 
   togglePasswordVisibility() {

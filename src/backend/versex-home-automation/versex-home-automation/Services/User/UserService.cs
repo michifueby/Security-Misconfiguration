@@ -8,6 +8,7 @@
 
 namespace versex_home_automation.Services.User;
 
+using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using versex_home_automation.Data;
 using versex_home_automation.Entities;
@@ -89,14 +90,11 @@ public class UserService : IUserService
 
     public IActionResult CreateNewUser(NewUserRequest req)
     {
-        var roles = GetRequestedRoles(req.Roles!, out bool errorHappened, out JsonResult error);
+        var roles = req.Roles;
 
         int roleId;
 
-        if (errorHappened)
-            return error;
-
-        if (roles.First().Equals(RoleName.Admin.ToString()))
+        if (roles!.First().Equals(RoleName.Admin.ToString()))
             roleId = 1;
         else
             roleId = 0;
@@ -108,7 +106,7 @@ public class UserService : IUserService
             FirstName = req.FirstName,
             LastName = req.LastName,
             PasswordSalt = PasswordHasher.GenerateSalt(),
-            RoleId = req.Roles!.Equals("Admin") ? 0 : 1
+            RoleId = roleId
     };
 
         // Hashes the password
@@ -173,29 +171,21 @@ public class UserService : IUserService
         if (errorHappened)
             return error;
 
-        var roles = GetRequestedRoles(req.Roles!, out bool rolesErrorHappened, out JsonResult rolesError);
+        var roles = req.Roles;
 
-        if (rolesErrorHappened)
-            return rolesError;
+        int roleId;
+
+        if (roles!.First().Equals(RoleName.Admin.ToString()))
+            roleId = 1;
+        else
+            roleId = 0;
 
         // Update data
         user.UserName = req.UserName;
         user.Email = req.Email;
         user.FirstName = req.FirstName;
         user.LastName = req.LastName;
-        user.RoleId = req.Roles!.Equals("Admin") ? 0 : 1;
-
-        // Add requested, missing roles
-        foreach (var role in roles.Where(requestedRole => !user.Roles!.Contains(requestedRole)))
-        {
-            user.Roles!.Add(role);
-        }
-
-        // Remove assigned roles which are not in the request
-        foreach (var role in user.Roles!.Where(r => !roles.Contains(r)))
-        {
-            user.Roles!.Remove(role);
-        }
+        user.RoleId = roleId;
 
         var returnValue = _dataContext.Users.Update(user).Entity;
         var returnMessage = new UserResponse(returnValue);
@@ -293,31 +283,6 @@ public class UserService : IUserService
         error = null!;
 
         return user;
-    }
-
-    private List<Role> GetRequestedRoles(ICollection<string> requestedRoles, out bool errorHappened, out JsonResult error)
-    {
-        var roles = new List<Role>();
-
-        // If specific roles are requested, check for invalid roles and assign roles
-        if (requestedRoles != null)
-        {
-            var allRoles = _dataContext.Roles.AsEnumerable();
-
-            if (requestedRoles.Any(r => allRoles.All(dbr => dbr.Name.ToString() != r)))
-            {
-                errorHappened = true;
-                error = new JsonResult(new { message = "Invalid role requested!" }) { StatusCode = StatusCodes.Status400BadRequest };
-                return null!;
-            }
-
-            roles.AddRange(allRoles.Where(r => requestedRoles.Contains(r.Name.ToString())));
-        }
-
-        errorHappened = false;
-        error = null!;
-
-        return roles;
     }
 
     #endregion
