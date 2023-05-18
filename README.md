@@ -26,6 +26,6 @@ Link: https://localhost:7227/swagger/index.html
 
 ## Frontend
 1. Start the frontend with the command ```ng serve --open``` <br>
-Link: http://localhost:4200/dashboard
+Link: http://localhost:4200
 
 Do not use this demo application in production, contains security vulnerabilities!
