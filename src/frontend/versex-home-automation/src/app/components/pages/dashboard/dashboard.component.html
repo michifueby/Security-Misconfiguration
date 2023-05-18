@@ -1,13 +1,13 @@
 <div class="main">
   <div class="banner">
-    <img src="../assets/img/Versex-logo.png" height="50"/>
+    <img src="../assets/img/Versex-logo.png" height="50" [routerLink]="'/logs'"/>
     <div style="width: 100%;"></div>
-    <app-user-dropdown username="{{this.userService.getFirstAndSecondNameFromUser()}}"></app-user-dropdown>
+    <app-user-dropdown username="{{this.userService.getUserNameFromUser()}}"></app-user-dropdown>
   </div>
 
   <div class="container">
     <div class="sidenav">
-      <div class="element" [routerLink]="'dashboard'">
+      <div class="element" [routerLink]="'/dashboard'">
         <i class="pi pi-home" style="font-size: 1.2em;"></i>
         Home
       </div>
@@ -15,7 +15,7 @@
         <i class="pi pi-desktop" style="font-size: 1.2em;"></i>
         Dashboard
       </div>
-      <div *ngIf="this.userService.getUserRights()" class="element" style="margin-top: 2%;" [routerLink]="'/logs'">
+      <div *ngIf="this.userService.getIsUserAdmin()" class="element" style="margin-top: 2%;" [routerLink]="'/logs'">
         <i class="pi pi-server" style="font-size: 1.2em;"></i>
         Log History
       </div>

@@ -65,13 +65,13 @@ export class UserService {
     );
   }
 
-  public getUserRights(): boolean {
+  public getIsUserAdmin(): boolean {
     if (this.tokenStorage.getUser().roleId !== 1) return false;
 
     return true;
   }
 
-  public getFirstAndSecondNameFromUser(): string {
+  public getUserNameFromUser(): string {
     return this.tokenStorage.getUser().userName;
   }
 }

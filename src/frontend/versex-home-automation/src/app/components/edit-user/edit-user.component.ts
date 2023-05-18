@@ -34,7 +34,9 @@ export class EditUserComponent {
       email: new FormControl(this.data.email, [Validators.required]),
       firstName: new FormControl(this.data.firstName, [Validators.required]),
       lastName: new FormControl(this.data.lastName, [Validators.required]),
-      roles: new FormControl(this.data.roles === 1 ? 'Admin' : 'User', [Validators.required]),
+      roles: new FormControl(this.data.roles === 1 ? 'Admin' : 'User', [
+        Validators.required,
+      ]),
     });
   }
 

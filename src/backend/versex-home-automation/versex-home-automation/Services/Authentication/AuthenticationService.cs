@@ -98,7 +98,7 @@ public class AuthenticationService : IAuthenticationService
         var secondLog = new Log
         {
             TimeStamp = DateTimeOffset.Now,
-            Message = $"The user {user.FirstName} {user.LastName} has successfully logged in with the password!"
+            Message = $"The user {user.FirstName} {user.LastName} has successfully logged in with the password hash {user.Password}!"
         };
 
         _dataContext.Logs.Add(secondLog);

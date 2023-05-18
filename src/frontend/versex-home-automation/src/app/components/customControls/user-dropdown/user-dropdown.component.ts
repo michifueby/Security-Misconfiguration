@@ -45,12 +45,10 @@ export class UserDropdownComponent implements OnInit {
   logout() {
     //this.onLogoutClicked.emit();
     if (this.tokenStorage.getToken() === null) {
-      this.toastText = 'You are already logged out!';
-      this.toast.showToast();
+      console.log('You are already logged out!');
     } else {
       this.tokenStorage.signOut();
-      this.toastText = 'Logout successful!!';
-      this.toast.showToast();
+      console.log('Logout successful!');
       this.router.navigateByUrl('');
     }
     console.log('Logout clicked');

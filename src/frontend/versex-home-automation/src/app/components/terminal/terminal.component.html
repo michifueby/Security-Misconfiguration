@@ -3,22 +3,16 @@
     <div class="element">
       <i class="pi pi-server"></i>
     </div>
-    <div class="label">
-      Versex-Shell
-    </div>
-
+    <div class="label">Versex-Shell</div>
   </div>
   <div class="viewbox">
     <div class="display">
-      <div *ngFor="let log of dataSource;" class="row">
-        <div class="timestamp">
-          &lt;{{log.timeStamp}}&gt;
-        </div>
+      <div *ngFor="let log of dataSource" class="row">
+        <div class="timestamp">&lt;{{ log.timeStamp }}&gt;</div>
         <div class="log-message">
-          {{log.message}}
+          {{ log.message }}
         </div>
       </div>
-
     </div>
   </div>
 </div>
