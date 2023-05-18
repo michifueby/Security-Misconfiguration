@@ -5,7 +5,7 @@ import { TokenStorageService } from 'src/app/services/token/token-storage.servic
 import { User } from 'src/app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
-import { ToastComponent } from '../customControls/notification-toast/toast/toast.component';
+import { ToastComponent } from '../../customControls/notification-toast/toast/toast.component';
 
 @Component({
   selector: 'app-login-card',

@@ -4,7 +4,6 @@
     <div style="width: 100%;"></div>
     <app-user-dropdown username="{{this.userService.getUserNameFromUser()}}"></app-user-dropdown>
   </div>
-
   <div class="container">
     <div class="sidenav">
       <div class="element" [routerLink]="'/dashboard'">
@@ -30,38 +29,32 @@
           <h1>Controls</h1>
         </div>
         <div class="controls">
-          <div class="offset">
-            <app-door-device></app-door-device>
-          </div>
-          <div class="offset">
-            <app-door-device></app-door-device>
-          </div>
-          <div class="offset">
-            <app-ac-device></app-ac-device>
-          </div>
-          <div class="offset">
-            <app-ac-device></app-ac-device>
-          </div>
-          <div class="offset">
-            <app-light-device></app-light-device>
-          </div>
-          <div class="offset">
-            <app-light-device></app-light-device>
-          </div>
           <app-select-device *ngIf="showDeviceDialog" (onCloseClicked)="closeComponent()" (onAddDeviceClicked)="addDevice($event)"></app-select-device>
-          <div *ngFor="let d of devices"  class="offset">
+          <div *ngFor="let d of devices" class="offset">
             <div *ngIf="d.type == 'ac'">
-              <app-ac-device aliasName="{{d.name}}"></app-ac-device>
+              <div *ngIf="this.userService.getIsUserAdmin()">
+                <app-ac-device aliasName="{{d.name}}"></app-ac-device>
+              </div>
             </div>
             <div *ngIf="d.type == 'lightswitch'">
-              <app-light-device aliasName="{{d.name}}"></app-light-device>
+              <div *ngIf="this.userService.getIsUserAdmin()">
+                <app-light-device aliasName="{{d.name}}"></app-light-device>
+              </div>
             </div>
             <div *ngIf="d.type == 'door'">
-              <app-door-device aliasName="{{d.name}}"></app-door-device>
+              <div *ngIf="this.userService.getIsUserAdmin()">
+                <app-door-device aliasName="{{d.name}}"></app-door-device>
+              </div>
             </div>
           </div>
+
+          <div *ngIf="!this.userService.getIsUserAdmin()" class="fail">
+            <i class="pi pi-exclamation-triangle"></i>
+            Only the Administrator can add new devices.
+          </div>
+
           <div class="offset">
-            <app-add-device (onClicked)="displayDeviceDialog()"></app-add-device>
+            <app-add-device *ngIf="this.userService.getIsUserAdmin()" (onClicked)="displayDeviceDialog()"></app-add-device>
           </div>
         </div>
       </div>

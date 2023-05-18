@@ -45,6 +45,14 @@ public class ActorController : Controller
         return _actorService.GetAllActors();
     }
 
+    [Admin]
+    [HttpPut("user/create")]
+    public IActionResult CreateNewActor(NewDeviceRequest req)
+    {
+        _logger.LogInformation($"Create new actor with device {req.Name}!");
+        return _actorService.CreateNewActor(req);
+    }
+
     [LoggedIn]
     [HttpPut("actor/changeState/{id}")]
     public IActionResult ChangeStateFromActor(string id, ChangeStateFromDeviceRequest req)

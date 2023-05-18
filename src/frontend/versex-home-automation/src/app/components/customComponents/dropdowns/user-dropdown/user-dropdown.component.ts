@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token/token-storage.service';
 import { UserService } from 'src/app/services/user/user.service';
-import { ToastComponent } from '../notification-toast/toast/toast.component';
+import { ToastComponent } from 'src/app/components/customControls/notification-toast/toast/toast.component';
 
 @Component({
   selector: 'app-user-dropdown',
@@ -29,9 +29,6 @@ export class UserDropdownComponent implements OnInit {
 
   public ngOnInit(): void {
     this.toast = new ToastComponent();
-
-    if (this.tokenStorage.getUser().userId !== 1)
-      this.router.navigateByUrl('dashboard');
   }
 
   toggleDropdown() {

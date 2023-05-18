@@ -61,6 +61,47 @@ public class ActorService : IActorService
         return new JsonResult(response) { StatusCode = StatusCodes.Status200OK };
     }
 
+    public IActionResult CreateNewActor(NewDeviceRequest req)
+    {
+        var actor = new Entities.Actor 
+        {
+            UserId = 1
+        };
+
+        var actorReturnMessage = _dataContext.Actors.Add(actor).Entity;
+
+        var device = new Entities.Device
+        {
+            DeviceId = actorReturnMessage.ActorId,
+            Name = req.Name,
+            MAC = req.MAC,
+            State = req.State,
+            Value = req.Value
+        };
+
+        var returnMessage = _dataContext.Devices.Add(device).Entity;
+
+        try
+        {
+            _dataContext.SaveChanges();
+        }
+        catch (Microsoft.EntityFrameworkCore.DbUpdateException e)
+        {
+            return new JsonResult(new { message = e.InnerException!.Message }) { StatusCode = StatusCodes.Status400BadRequest };
+        };
+
+        var log = new Log
+        {
+            TimeStamp = DateTimeOffset.Now,
+            Message = $"Create a new device {device.Name} and saves the actor in the database!"
+        };
+
+        _dataContext.Logs.Add(log);
+        _dataContext.SaveChanges();
+
+        return new JsonResult(returnMessage) { StatusCode = StatusCodes.Status201Created };
+    }
+
     public IActionResult ChangeStateFromActor(string id, ChangeStateFromDeviceRequest req)
     {
         var actor = GetActorByStringId(id, out bool errorHappened, out JsonResult error);

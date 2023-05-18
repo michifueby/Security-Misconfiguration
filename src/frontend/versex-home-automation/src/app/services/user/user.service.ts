@@ -66,9 +66,7 @@ export class UserService {
   }
 
   public getIsUserAdmin(): boolean {
-    if (this.tokenStorage.getUser().roleId !== 1) return false;
-
-    return true;
+    return this.tokenStorage.getUser().roleId === 1
   }
 
   public getUserNameFromUser(): string {

@@ -1,23 +1,19 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="Device.cs" company="FH Wiener Neustadt">
+//-----------------------------------------------------------------------
+// <copyright file="NewDeviceRequest.cs" company="FH Wiener Neustadt">
 //     Copyright (c) FH Wiener Neustadt. All rights reserved.
 // </copyright>
 // <authors>Michael Füby, Tunjic Josip</authors>
 // <summary>Versex Home Automation</summary>
 //-----------------------------------------------------------------------
 
-namespace versex_home_automation.Entities;
+namespace versex_home_automation.Models.Requests;
 
-using System;
+using versex_home_automation.Entities;
 using System.ComponentModel.DataAnnotations;
 
-public class Device
+public class NewDeviceRequest
 {
     #region Properties
-
-    [Required]
-    [Key]
-    public int DeviceId { get; set; }
 
     [Required]
     public string? Name { get; set; }

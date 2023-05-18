@@ -92,6 +92,24 @@ body, html {
   margin-bottom: 20%;
 }
 
+.fail {
+  width: 100%;
+  height: 5em;
+  background-color: #071426;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-family: sans-serif;
+  flex-direction: row;
+}
+
+.fail i {
+  margin-right: 10px;
+  font-size: 1.3em;
+}
+
 .offset {
   margin: 1%;
 }

@@ -102,6 +102,10 @@ public partial class DatabaseContext : DbContext
                 .IsRequired()
                 .HasMaxLength(255);
 
+            entity.Property(e => e.MAC)
+                .IsRequired()
+                .HasMaxLength(255);
+
             entity.Property(e => e.State)
                 .IsRequired();
 

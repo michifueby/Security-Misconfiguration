@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PanelModule } from 'primeng/panel';
 import { TokenStorageService } from 'src/app/services/token/token-storage.service';
 import { Device } from '../../customComponents/selectors/select-device/select-device.component';
 import { UserService } from 'src/app/services/user/user.service';
+import { ActorService } from 'src/app/services/actor/actor.service';
+import { ActorData } from 'src/app/models/actor.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     public tokenStorage: TokenStorageService,
     public router: Router,
-    public userService: UserService
+    public userService: UserService,
+    private actorService: ActorService
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +30,6 @@ export class DashboardComponent implements OnInit {
 
   addDevice(device:Device){
     this.devices.push(device);
-    console.log(this.devices);
     this.showDeviceDialog = false;
   }
 
