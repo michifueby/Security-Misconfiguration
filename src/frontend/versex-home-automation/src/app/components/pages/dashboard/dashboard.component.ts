@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PanelModule } from 'primeng/panel';
 import { TokenStorageService } from 'src/app/services/token/token-storage.service';
-import { Device } from '../../customControls/select-device/select-device.component';
+import { Device } from '../../customComponents/selectors/select-device/select-device.component';
 
 @Component({
   selector: 'app-dashboard',

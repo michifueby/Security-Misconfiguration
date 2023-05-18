@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-light-luminacnce',
-  templateUrl: './light-luminacnce.component.html',
-  styleUrls: ['./light-luminacnce.component.scss']
+  selector: 'app-luminacnce',
+  templateUrl: './luminacnce.component.html',
+  styleUrls: ['./luminacnce.component.scss']
 })
-export class LightLuminacnceComponent implements AfterViewInit{
+export class LuminacnceComponent implements AfterViewInit{
 
   @Input() minimum: number = 0;
   @Input() maximum: number = 1;
