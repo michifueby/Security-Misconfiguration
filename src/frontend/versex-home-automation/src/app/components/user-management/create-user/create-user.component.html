@@ -1,23 +1,23 @@
 <h1 mat-dialog-title class="title">Create user</h1>
 <div mat-dialog-content class="content">
     <form (ngSubmit)="onSubmit()" name="editingForm" [formGroup]="editUserForm" class="content">
-        <span class="p-float-label">
+        <span class="p-float-label offset">
           <input pInputText id="firstname" formControlName="firstName"/>
           <label htmlFor="firstname">Firstname</label>
         </span><br>
-        <span class="p-float-label">
+        <span class="p-float-label offset">
           <input pInputText id="lastname" formControlName="lastName"/>
           <label htmlFor="lastname">Lastname</label>
         </span><br>
-        <span class="p-float-label">
+        <span class="p-float-label offset">
           <input pInputText id="username" formControlName="userName"/>
           <label htmlFor="username">Username</label>
         </span><br>
-        <span class="p-float-label">
+        <span class="p-float-label offset">
           <input pInputText id="email" formControlName="email"/>
           <label htmlFor="email">Email</label>
         </span><br>
-        <span class="p-float-label">
+        <span class="p-float-label offset">
           <input pInputText id="password" formControlName="password"/>
           <label htmlFor="password">Password</label>
         </span><br>
