@@ -29,10 +29,10 @@ Link: https://localhost:7227/swagger/index.html
 Link: http://localhost:4200
 2. Login-Page: <br>
    Admin:<br>
-   username:    <b>admin</b> <br>
-   password:    <b>test123</b> <br>
+   -    username:    <b>admin</b> <br>
+   -    password:    <b>test123</b> <br>
    User:<br>
-   username:    <b>user</b> <br>
-   password:    <b>test123</b>
+   -    username:    <b>user</b> <br>
+   -    password:    <b>test123</b>
 
 Do not use this demo application in production, contains security vulnerabilities!
