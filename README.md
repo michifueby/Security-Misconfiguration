@@ -31,7 +31,7 @@ Link: http://localhost:4200
    Admin:<br>
 
     -    username:    <b>admin</b> <br>
-    -    password:    <b>test123</b> <br
+    -    password:    <b>test123</b> <br>
 
    User:<br>
 
